@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import lockitLogo from "@/assets/lockit-logo.png";
+import Logo from "@/components/Logo";
 
 const Footer = () => {
   return (
