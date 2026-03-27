@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img src={lockitLogo} alt="LOCKIT self storage" className="h-10 w-auto mb-4" />
+            <Logo className="mb-4" />
             <p className="text-sm leading-relaxed opacity-80">
               Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7.
             </p>

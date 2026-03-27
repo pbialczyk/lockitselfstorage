@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src={lockitLogo} alt="LOCKIT self storage" className="h-10 lg:h-12 w-auto" />
+            <Logo />
           </Link>
 
           {/* Desktop nav */}
