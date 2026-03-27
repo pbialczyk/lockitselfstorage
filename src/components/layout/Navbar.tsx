@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import lockitLogo from "@/assets/lockit-logo.png";
+import Logo from "@/components/Logo";
 
 const navItems = [
   { label: "Główna", href: "/" },
