@@ -6,7 +6,7 @@ interface LogoProps {
 }
 
 const Logo = ({ className = "", variant = "light" }: LogoProps) => {
-  const textColor = variant === "light" ? "text-primary-foreground" : "text-brand-deep";
+  const textColor = variant === "light" ? "text-primary-foreground" : "text-foreground";
   const accentColor = "text-accent";
 
   return (

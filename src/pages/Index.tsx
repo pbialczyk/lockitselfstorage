@@ -244,7 +244,7 @@ const Index = () => {
                       href={box.ctaLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block gradient-brand text-primary-foreground py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity"
+                      className="block gradient-brand text-foreground py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity"
                     >
                       Wynajmij teraz
                     </a>
