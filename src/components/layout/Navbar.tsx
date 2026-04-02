@@ -95,7 +95,7 @@ const Navbar = () => {
                 href="https://wynajmij.lockit.pl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block gradient-brand text-primary-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
+                className="block gradient-brand text-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
               >
                 Zarezerwuj boks
               </a>
