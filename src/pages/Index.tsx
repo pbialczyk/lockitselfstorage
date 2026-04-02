@@ -156,7 +156,7 @@ const Index = () => {
               href="https://wynajmij.lockit.pl"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-brand text-primary-foreground px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition-opacity shadow-lg"
+              className="gradient-brand text-foreground px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition-opacity shadow-lg"
             >
               Wynajmij teraz
             </a>
