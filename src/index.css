@@ -6,67 +6,67 @@
 
 @layer base {
   :root {
-    /* LOCKIT Brand */
-    --brand: 200 85% 29%;
-    --brand-mid: 200 74% 40%;
-    --brand-light: 202 72% 91%;
-    --brand-deep: 200 86% 19%;
-    --brand-50: 202 60% 97%;
+    /* LOCKIT Brand — black + green (#88C22A) */
+    --brand: 86 65% 46%;
+    --brand-mid: 86 55% 52%;
+    --brand-light: 86 30% 85%;
+    --brand-deep: 0 0% 7%;
+    --brand-50: 86 30% 96%;
 
-    --accent-green: 145 65% 38%;
-    --accent-green-light: 145 50% 82%;
+    --accent-green: 86 65% 46%;
+    --accent-green-light: 86 40% 80%;
 
     /* Core tokens */
-    --background: 210 20% 98%;
-    --foreground: 215 28% 17%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 200 85% 29%;
+    --primary: 86 65% 46%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 215 28% 17%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 145 65% 38%;
+    --accent: 86 65% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 200 85% 29%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 86 65% 46%;
 
     --radius: 0.75rem;
 
     /* Hero / dark surfaces */
-    --hero-bg: 200 86% 8%;
+    --hero-bg: 0 0% 5%;
     --hero-foreground: 0 0% 100%;
-    --hero-muted: 200 20% 80%;
+    --hero-muted: 0 0% 75%;
 
     /* Segment colors */
-    --segment-green: 145 65% 38%;
+    --segment-green: 86 65% 46%;
     --segment-amber: 36 85% 41%;
     --segment-purple: 261 44% 51%;
     --segment-coral: 12 73% 44%;
     --segment-teal: 189 82% 21%;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 26%;
+    --sidebar-primary: 0 0% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 86 65% 46%;
   }
 }
 
@@ -112,7 +112,7 @@
   }
 
   .text-gradient-brand {
-    background: linear-gradient(135deg, hsl(var(--brand-mid)) 0%, hsl(var(--accent-green)) 100%);
+    background: linear-gradient(135deg, hsl(86 65% 46%) 0%, hsl(86 55% 58%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

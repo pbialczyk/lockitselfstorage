@@ -53,7 +53,7 @@ const Navbar = () => {
               href="https://wynajmij.lockit.pl"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-brand text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity"
+              className="gradient-brand text-foreground px-5 py-2.5 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity"
             >
               Zarezerwuj boks
             </a>
@@ -95,7 +95,7 @@ const Navbar = () => {
                 href="https://wynajmij.lockit.pl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block gradient-brand text-primary-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
+                className="block gradient-brand text-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
               >
                 Zarezerwuj boks
               </a>
