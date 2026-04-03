@@ -1,5 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import { useParams, Link } from "react-router-dom";
+import boksS from "@/assets/boks-s.png";
+import boksM from "@/assets/boks-m.png";
+import boksL from "@/assets/boks-l.png";
 
 const boksData: Record<string, {
   label: string; name: string; h1: string; area: string; size: string;
