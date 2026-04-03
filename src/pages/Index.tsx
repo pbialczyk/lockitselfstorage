@@ -120,13 +120,16 @@ const Index = () => {
     >
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Wnętrze magazynu LOCKIT self storage w Szczecinie"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroImage}
           className="absolute inset-0 w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
+        >
+          <source src="/video/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
