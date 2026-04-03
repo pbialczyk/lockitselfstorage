@@ -1,10 +1,13 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import boksS from "@/assets/boks-s.png";
+import boksM from "@/assets/boks-m.png";
+import boksL from "@/assets/boks-l.png";
 
 const boxes = [
   {
-    label: "S", name: "Boks S", subtitle: "3 m² · boks mały", size: "150×200×200 cm",
+    label: "S", name: "Boks S", subtitle: "3 m² · boks mały", size: "150×200×200 cm", image: boksS,
     desc: "Idealna komórka lokatorska na kartony, drobne meble czy narzędzia ogrodowe. Mieści towar z 6 europalet.",
     price: "od 125", priceRegular: "250",
     link: "/boksy/boks-s-szczecin",
