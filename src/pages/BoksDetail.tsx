@@ -41,7 +41,7 @@ const boksData: Record<string, {
     label: "L", name: "Boks L", h1: "Boks L — 12 m² self storage Szczecin",
     area: "12 m²", size: "200×600×200 cm",
     desc: "Duży boks magazynowy — aż 24 m³ przestrzeni. Często wybierany przez firmy do przechowywania mebli, maszyn, materiałów budowlanych i towarów.",
-    price: "od 250", priceRegular: "500",
+    price: "od 250", priceRegular: "500", image: boksL,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 12m² Szczecin", "duży magazyn Szczecin", "wynajem powierzchni magazynowej Szczecin"],
     content: [
