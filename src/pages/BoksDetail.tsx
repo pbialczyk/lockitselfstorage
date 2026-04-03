@@ -9,7 +9,6 @@ const boksData: Record<string, {
   desc: string; price: string; priceRegular: string;
   ctaLink: string; frazy: string[]; image: string;
   content: string[];
-  content: string[];
 }> = {
   "boks-s-szczecin": {
     label: "S", name: "Boks S", h1: "Boks S — 3 m² self storage Szczecin",
