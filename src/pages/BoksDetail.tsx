@@ -28,7 +28,7 @@ const boksData: Record<string, {
     label: "M", name: "Boks M", h1: "Boks M — 6 m² self storage Szczecin",
     area: "6 m²", size: "200×300×200 cm",
     desc: "Średni boks magazynowy — najpopularniejszy wybór. Idealny na meble z mieszkania, rowery, motor, narty i rzeczy osobiste.",
-    price: "od 175", priceRegular: "350",
+    price: "od 175", priceRegular: "350", image: boksM,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 6m² Szczecin", "wynajem magazynu 6m² Szczecin", "self storage Szczecin"],
     content: [
