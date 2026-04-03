@@ -235,7 +235,8 @@ const Index = () => {
                   </div>
                 )}
                 <div className="p-6 text-center">
-                  <div className="text-5xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
+                  <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" />
+                  <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
                   <h3 className="text-lg font-bold text-primary-foreground mb-1">{box.name}</h3>
                   <p className="text-sm text-brand-light/70 mb-1">{box.size}</p>
                   <p className="text-sm text-brand-light/80 mb-4">{box.desc}</p>
