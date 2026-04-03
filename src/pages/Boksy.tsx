@@ -16,7 +16,7 @@ const boxes = [
   {
     label: "M", name: "Boks M", subtitle: "6 m² · boks średni", size: "200×300×200 cm",
     desc: "Doskonałe rozwiązanie do przechowywania rowerów, motoru, nart lub mebli z mieszkania do 50 m². Mieści towar z 12 europalet.",
-    price: "od 175", priceRegular: "350",
+    price: "od 175", priceRegular: "350", image: boksM,
     link: "/boksy/boks-m-szczecin",
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62",
     featured: true,
