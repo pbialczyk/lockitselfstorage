@@ -24,7 +24,7 @@ const boxes = [
   {
     label: "L", name: "Boks L", subtitle: "12 m² · boks duży", size: "200×600×200 cm",
     desc: "Duża przestrzeń często wybierana przez firmy. Idealna dla mebli, sprzętu, maszyn i materiałów budowlanych. Aż 24 m³!",
-    price: "od 250", priceRegular: "500",
+    price: "od 250", priceRegular: "500", image: boksL,
     link: "/boksy/boks-l-szczecin",
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62",
   },
