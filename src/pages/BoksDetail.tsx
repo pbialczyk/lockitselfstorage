@@ -87,6 +87,7 @@ const BoksDetail = () => {
       <section className="section-padding bg-brand-deep">
         <div className="container-narrow mx-auto text-center">
           <div className="text-7xl font-extrabold text-brand-light/20 mb-4">{boks.label}</div>
+          <img src={boks.image} alt={boks.name} className="w-52 h-auto mx-auto mb-4" />
           <h1 className="text-3xl lg:text-4xl font-extrabold text-primary-foreground mb-3">{boks.h1}</h1>
           <p className="text-brand-light/80 text-lg">{boks.desc}</p>
         </div>
