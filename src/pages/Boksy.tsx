@@ -73,7 +73,8 @@ const Boksy = () => (
                 </div>
               )}
               <div className="p-8 text-center">
-                <div className="text-6xl font-extrabold text-brand mb-2">{box.label}</div>
+                <img src={box.image} alt={box.name} className="w-40 h-auto mx-auto mb-4" />
+                <div className="text-4xl font-extrabold text-brand mb-2">{box.label}</div>
                 <h2 className="text-xl font-bold text-foreground">{box.name}</h2>
                 <p className="text-muted-foreground text-sm mb-1">{box.subtitle}</p>
                 <p className="text-muted-foreground text-xs mb-4">{box.size}</p>
