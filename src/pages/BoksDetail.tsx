@@ -1,17 +1,20 @@
 import Layout from "@/components/layout/Layout";
 import { useParams, Link } from "react-router-dom";
+import boksS from "@/assets/boks-s.png";
+import boksM from "@/assets/boks-m.png";
+import boksL from "@/assets/boks-l.png";
 
 const boksData: Record<string, {
   label: string; name: string; h1: string; area: string; size: string;
   desc: string; price: string; priceRegular: string;
-  ctaLink: string; frazy: string[];
+  ctaLink: string; frazy: string[]; image: string;
   content: string[];
 }> = {
   "boks-s-szczecin": {
     label: "S", name: "Boks S", h1: "Boks S — 3 m² self storage Szczecin",
     area: "3 m²", size: "150×200×200 cm",
     desc: "Mały boks magazynowy idealny jako komórka lokatorska do przechowywania kartonów, drobnych mebli, narzędzi ogrodowych czy sprzętu sportowego.",
-    price: "od 125", priceRegular: "250",
+    price: "od 125", priceRegular: "250", image: boksS,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 3m² Szczecin", "mały magazyn Szczecin", "schowek na rzeczy Szczecin"],
     content: [
@@ -24,7 +27,7 @@ const boksData: Record<string, {
     label: "M", name: "Boks M", h1: "Boks M — 6 m² self storage Szczecin",
     area: "6 m²", size: "200×300×200 cm",
     desc: "Średni boks magazynowy — najpopularniejszy wybór. Idealny na meble z mieszkania, rowery, motor, narty i rzeczy osobiste.",
-    price: "od 175", priceRegular: "350",
+    price: "od 175", priceRegular: "350", image: boksM,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 6m² Szczecin", "wynajem magazynu 6m² Szczecin", "self storage Szczecin"],
     content: [
@@ -37,7 +40,7 @@ const boksData: Record<string, {
     label: "L", name: "Boks L", h1: "Boks L — 12 m² self storage Szczecin",
     area: "12 m²", size: "200×600×200 cm",
     desc: "Duży boks magazynowy — aż 24 m³ przestrzeni. Często wybierany przez firmy do przechowywania mebli, maszyn, materiałów budowlanych i towarów.",
-    price: "od 250", priceRegular: "500",
+    price: "od 250", priceRegular: "500", image: boksL,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 12m² Szczecin", "duży magazyn Szczecin", "wynajem powierzchni magazynowej Szczecin"],
     content: [
@@ -83,6 +86,7 @@ const BoksDetail = () => {
       <section className="section-padding bg-brand-deep">
         <div className="container-narrow mx-auto text-center">
           <div className="text-7xl font-extrabold text-brand-light/20 mb-4">{boks.label}</div>
+          <img src={boks.image} alt={boks.name} className="w-52 h-auto mx-auto mb-4" />
           <h1 className="text-3xl lg:text-4xl font-extrabold text-primary-foreground mb-3">{boks.h1}</h1>
           <p className="text-brand-light/80 text-lg">{boks.desc}</p>
         </div>

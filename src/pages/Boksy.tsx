@@ -1,10 +1,13 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import boksS from "@/assets/boks-s.png";
+import boksM from "@/assets/boks-m.png";
+import boksL from "@/assets/boks-l.png";
 
 const boxes = [
   {
-    label: "S", name: "Boks S", subtitle: "3 m² · boks mały", size: "150×200×200 cm",
+    label: "S", name: "Boks S", subtitle: "3 m² · boks mały", size: "150×200×200 cm", image: boksS,
     desc: "Idealna komórka lokatorska na kartony, drobne meble czy narzędzia ogrodowe. Mieści towar z 6 europalet.",
     price: "od 125", priceRegular: "250",
     link: "/boksy/boks-s-szczecin",
@@ -13,7 +16,7 @@ const boxes = [
   {
     label: "M", name: "Boks M", subtitle: "6 m² · boks średni", size: "200×300×200 cm",
     desc: "Doskonałe rozwiązanie do przechowywania rowerów, motoru, nart lub mebli z mieszkania do 50 m². Mieści towar z 12 europalet.",
-    price: "od 175", priceRegular: "350",
+    price: "od 175", priceRegular: "350", image: boksM,
     link: "/boksy/boks-m-szczecin",
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62",
     featured: true,
@@ -21,7 +24,7 @@ const boxes = [
   {
     label: "L", name: "Boks L", subtitle: "12 m² · boks duży", size: "200×600×200 cm",
     desc: "Duża przestrzeń często wybierana przez firmy. Idealna dla mebli, sprzętu, maszyn i materiałów budowlanych. Aż 24 m³!",
-    price: "od 250", priceRegular: "500",
+    price: "od 250", priceRegular: "500", image: boksL,
     link: "/boksy/boks-l-szczecin",
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62",
   },
@@ -70,7 +73,8 @@ const Boksy = () => (
                 </div>
               )}
               <div className="p-8 text-center">
-                <div className="text-6xl font-extrabold text-brand mb-2">{box.label}</div>
+                <img src={box.image} alt={box.name} className="w-40 h-auto mx-auto mb-4" />
+                <div className="text-4xl font-extrabold text-brand mb-2">{box.label}</div>
                 <h2 className="text-xl font-bold text-foreground">{box.name}</h2>
                 <p className="text-muted-foreground text-sm mb-1">{box.subtitle}</p>
                 <p className="text-muted-foreground text-xs mb-4">{box.size}</p>
