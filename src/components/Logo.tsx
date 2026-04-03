@@ -1,4 +1,4 @@
-import { Lock } from "lucide-react";
+import lockitLogo from "@/assets/lockit-logo.png";
 
 interface LogoProps {
   className?: string;
@@ -6,20 +6,12 @@ interface LogoProps {
 }
 
 const Logo = ({ className = "", variant = "light" }: LogoProps) => {
-  const textColor = variant === "light" ? "text-primary-foreground" : "text-foreground";
-  const accentColor = "text-accent";
-
   return (
-    <div className={`flex items-center gap-1.5 ${className}`}>
-      <div className="relative">
-        <span className={`text-2xl font-extrabold tracking-tight ${textColor}`}>L</span>
-        <Lock className={`inline w-5 h-5 -mx-0.5 ${accentColor}`} strokeWidth={2.5} />
-        <span className={`text-2xl font-extrabold tracking-tight ${textColor}`}>ckit</span>
-      </div>
-      <span className={`text-[10px] font-semibold tracking-widest uppercase opacity-70 ${textColor} self-end mb-0.5`}>
-        self storage
-      </span>
-    </div>
+    <img
+      src={lockitLogo}
+      alt="Lockit Self Storage"
+      className={`h-10 w-auto ${variant === "light" ? "brightness-0 invert" : ""} ${className}`}
+    />
   );
 };
 
