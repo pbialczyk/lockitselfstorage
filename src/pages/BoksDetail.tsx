@@ -15,7 +15,7 @@ const boksData: Record<string, {
     label: "S", name: "Boks S", h1: "Boks S — 3 m² self storage Szczecin",
     area: "3 m²", size: "150×200×200 cm",
     desc: "Mały boks magazynowy idealny jako komórka lokatorska do przechowywania kartonów, drobnych mebli, narzędzi ogrodowych czy sprzętu sportowego.",
-    price: "od 125", priceRegular: "250",
+    price: "od 125", priceRegular: "250", image: boksS,
     ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62",
     frazy: ["boks 3m² Szczecin", "mały magazyn Szczecin", "schowek na rzeczy Szczecin"],
     content: [
