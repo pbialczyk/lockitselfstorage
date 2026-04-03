@@ -7,7 +7,8 @@ import boksL from "@/assets/boks-l.png";
 const boksData: Record<string, {
   label: string; name: string; h1: string; area: string; size: string;
   desc: string; price: string; priceRegular: string;
-  ctaLink: string; frazy: string[];
+  ctaLink: string; frazy: string[]; image: string;
+  content: string[];
   content: string[];
 }> = {
   "boks-s-szczecin": {
