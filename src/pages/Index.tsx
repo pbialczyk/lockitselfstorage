@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import heroImage from "@/assets/hero-storage.jpg";
+import boksS from "@/assets/boks-s.png";
+import boksM from "@/assets/boks-m.png";
+import boksL from "@/assets/boks-l.png";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import {
