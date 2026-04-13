@@ -164,7 +164,7 @@ const SegmentPage = () => {
           </div>
 
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Zarezerwuj boks już teraz</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">Wynajmij boks już teraz</h2>
             <p className="text-muted-foreground mb-6">Wybierz rozmiar i wynajmij online w 5 minut.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wynajmij.lockit.pl" target="_blank" rel="noopener noreferrer"
