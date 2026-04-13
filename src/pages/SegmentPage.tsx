@@ -108,11 +108,60 @@ const segmentData: Record<string, {
   },
 };
 
+const SegmentSection = ({ data, headingTag: H = "h2" }: { data: typeof segmentData[string]; headingTag?: "h1" | "h2" }) => (
+  <>
+    <section className="section-padding bg-brand-deep">
+      <div className="container-narrow mx-auto text-center">
+        <H className="text-3xl lg:text-4xl font-extrabold text-primary-foreground mb-4">{data.h1}</H>
+        <p className="text-brand-light/80 text-lg max-w-2xl mx-auto">{data.intro}</p>
+      </div>
+    </section>
+
+    <section className="section-padding bg-background">
+      <div className="container-narrow mx-auto max-w-4xl">
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Korzyści</h2>
+            <ul className="space-y-3">
+              {data.benefits.map((b, i) => (
+                <motion.li key={i} className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                >
+                  <span className="w-6 h-6 rounded-full gradient-brand flex items-center justify-center text-primary-foreground text-xs font-bold shrink-0 mt-0.5">✓</span>
+                  <span className="text-foreground">{b}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Zastosowania</h2>
+            <ul className="space-y-3">
+              {data.useCases.map((u, i) => (
+                <motion.li key={i} className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
+                  <span className="text-foreground">{u}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </>
+);
+
 const SegmentPage = () => {
   const location = useLocation();
   const data = segmentData[location.pathname];
 
   if (!data) return null;
+
+  const isKlienciPage = location.pathname === "/dla-klientow-indywidualnych";
+  const bizData = segmentData["/dla-firm"];
 
   return (
     <Layout title={data.title} description={data.description} canonical={data.canonical}
@@ -123,46 +172,12 @@ const SegmentPage = () => {
         provider: { "@type": "SelfStorage", name: "LOCKIT self storage", address: { "@type": "PostalAddress", streetAddress: "ul. Gdańska 14C", addressLocality: "Szczecin" } },
       }}
     >
-      <section className="section-padding bg-brand-deep">
-        <div className="container-narrow mx-auto text-center">
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-primary-foreground mb-4">{data.h1}</h1>
-          <p className="text-brand-light/80 text-lg max-w-2xl mx-auto">{data.intro}</p>
-        </div>
-      </section>
+      <SegmentSection data={data} headingTag="h1" />
+
+      {isKlienciPage && bizData && <SegmentSection data={bizData} headingTag="h2" />}
 
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto max-w-4xl">
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Korzyści</h2>
-              <ul className="space-y-3">
-                {data.benefits.map((b, i) => (
-                  <motion.li key={i} className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  >
-                    <span className="w-6 h-6 rounded-full gradient-brand flex items-center justify-center text-primary-foreground text-xs font-bold shrink-0 mt-0.5">✓</span>
-                    <span className="text-foreground">{b}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Zastosowania</h2>
-              <ul className="space-y-3">
-                {data.useCases.map((u, i) => (
-                  <motion.li key={i} className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
-                    <span className="text-foreground">{u}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center">
             <h2 className="text-2xl font-bold text-foreground mb-4">Wynajmij boks już teraz</h2>
             <p className="text-muted-foreground mb-6">Wybierz rozmiar i wynajmij online w 5 minut.</p>
