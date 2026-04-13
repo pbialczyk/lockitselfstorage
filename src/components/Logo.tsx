@@ -1,4 +1,4 @@
-import lockitLogo from "@/assets/lockit-logo.png";
+import lockitLogo from "@/assets/lockit-logo.webp";
 
 interface LogoProps {
   className?: string;

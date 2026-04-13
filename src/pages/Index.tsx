@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
-import heroImage from "@/assets/hero-storage.jpg";
-import boksS from "@/assets/boks-s.png";
-import boksM from "@/assets/boks-m.png";
-import boksL from "@/assets/boks-l.png";
+import heroImage from "@/assets/hero-storage.webp";
+import boksS from "@/assets/boks-s.webp";
+import boksM from "@/assets/boks-m.webp";
+import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import {
@@ -235,7 +235,7 @@ const Index = () => {
                   </div>
                 )}
                 <div className="p-6 text-center">
-                  <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" />
+                  <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
                   <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
                   <h3 className="text-lg font-bold text-primary-foreground mb-1">{box.name}</h3>
                   <p className="text-sm text-brand-light/70 mb-1">{box.size}</p>
