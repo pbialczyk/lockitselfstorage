@@ -69,7 +69,7 @@ const ServicePage = () => {
 
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center mt-12">
             <h2 className="text-2xl font-bold text-foreground mb-4">Potrzebujesz boksu magazynowego?</h2>
-            <p className="text-muted-foreground mb-6">Sprawdź naszą ofertę i zarezerwuj boks online.</p>
+            <p className="text-muted-foreground mb-6">Sprawdź naszą ofertę i wynajmij boks online.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wynajmij.lockit.pl" target="_blank" rel="noopener noreferrer"
                 className="inline-block gradient-brand text-primary-foreground px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-opacity">
