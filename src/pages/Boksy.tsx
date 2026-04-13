@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import boksS from "@/assets/boks-s.png";
-import boksM from "@/assets/boks-m.png";
-import boksL from "@/assets/boks-l.png";
+import boksS from "@/assets/boks-s.webp";
+import boksM from "@/assets/boks-m.webp";
+import boksL from "@/assets/boks-l.webp";
 
 const boxes = [
   {
