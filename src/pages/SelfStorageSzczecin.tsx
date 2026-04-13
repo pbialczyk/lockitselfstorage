@@ -64,7 +64,7 @@ const SelfStorageSzczecin = () => (
                   rel="noopener noreferrer"
                   className="inline-block gradient-brand text-primary-foreground px-8 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity"
                 >
-                  Zarezerwuj boks online →
+                  Wynajmij boks online →
                 </a>
               </div>
             </div>
@@ -103,7 +103,7 @@ const SelfStorageSzczecin = () => (
               rel="noopener noreferrer"
               className="block gradient-brand text-primary-foreground text-center py-4 rounded-xl font-bold hover:opacity-90 transition-opacity"
             >
-              Zarezerwuj boks →
+              Wynajmij boks →
             </a>
           </aside>
         </div>

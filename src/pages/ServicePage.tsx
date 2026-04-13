@@ -73,7 +73,7 @@ const ServicePage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wynajmij.lockit.pl" target="_blank" rel="noopener noreferrer"
                 className="inline-block gradient-brand text-primary-foreground px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-opacity">
-                Zarezerwuj boks →
+                Wynajmij boks →
               </a>
               <Link to="/kontakt" className="inline-block border-2 border-brand text-brand px-8 py-4 rounded-lg font-bold hover:bg-brand hover:text-primary-foreground transition-colors">
                 Skontaktuj się
