@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import heroImage from "@/assets/hero-storage.webp";
 import boksS from "@/assets/boks-s.webp";
@@ -7,6 +6,7 @@ import boksM from "@/assets/boks-m.webp";
 import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { useInView } from "@/hooks/useInView";
 import {
   Accordion,
   AccordionContent,
@@ -116,23 +116,31 @@ const segments = [
   { title: "Dla studentów", href: "/dla-studentow", desc: "Tanie przechowywanie na wakacje" },
 ];
 
+const AnimatedCard = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+  const { ref, inView } = useInView();
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const Index = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    // Defer video loading until after initial paint
     const timer = setTimeout(() => setShowVideo(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Layout
-      canonical="/"
-      jsonLd={LOCAL_BUSINESS_JSONLD}
-    >
+    <Layout canonical="/" jsonLd={LOCAL_BUSINESS_JSONLD}>
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Show poster image immediately, defer video */}
         <img
           src={heroImage}
           alt=""
@@ -153,29 +161,14 @@ const Index = () => {
         )}
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 animate-fade-in-up">
             Magazyn na miarę{" "}
             <span className="text-gradient-brand">Twoich potrzeb</span>
-          </motion.h1>
-          <motion.p
-            className="text-lg sm:text-xl text-hero-muted mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
+          </h1>
+          <p className="text-lg sm:text-xl text-hero-muted mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7. Wynajem online w 5 minut.
-          </motion.p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
             <a
               href="https://wynajmij.lockit.pl"
               target="_blank"
@@ -190,7 +183,7 @@ const Index = () => {
             >
               Zadzwoń — doradzimy
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -205,20 +198,15 @@ const Index = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                className="text-center p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:-translate-y-1 transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mx-auto mb-3">
-                  <f.icon className="w-6 h-6 text-primary-foreground" />
+              <AnimatedCard key={f.title} delay={i * 100}>
+                <div className="text-center p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mx-auto mb-3">
+                    <f.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-bold text-sm text-foreground mb-1">{f.title}</h3>
+                  <p className="text-xs text-muted-foreground">{f.desc}</p>
                 </div>
-                <h3 className="font-bold text-sm text-foreground mb-1">{f.title}</h3>
-                <p className="text-xs text-muted-foreground">{f.desc}</p>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -235,53 +223,50 @@ const Index = () => {
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {boxes.map((box, i) => (
-              <motion.div
-                key={box.label}
-                className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl ${
-                  box.featured
-                    ? "border-accent bg-brand/50 scale-[1.03]"
-                    : "border-brand/40 bg-brand/30"
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-              >
-                {box.featured && (
-                  <div className="bg-accent text-accent-foreground text-center py-1.5 text-xs font-bold tracking-wide uppercase">
-                    Najpopularniejszy
-                  </div>
-                )}
-                <div className="p-6 text-center">
-                  <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
-                  <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
-                  <h3 className="text-lg font-bold text-primary-foreground mb-1">{box.name}</h3>
-                  <p className="text-sm text-brand-light/70 mb-1">{box.size}</p>
-                  <p className="text-sm text-brand-light/80 mb-4">{box.desc}</p>
-                  <div className="mb-4">
-                    <span className="text-3xl font-extrabold text-primary-foreground">{box.price}</span>
-                    <span className="text-brand-light/60 text-sm"> zł/mies.</span>
-                    <div className="text-xs text-brand-light/50 line-through">{box.priceRegular} zł/mies.</div>
-                    <div className="text-xs text-accent font-semibold mt-1">-50% przez pierwszy miesiąc</div>
-                  </div>
-                  <div className="space-y-2">
-                    <a
-                      href={box.ctaLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block gradient-brand text-foreground py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity"
-                    >
-                      Wynajmij teraz
-                    </a>
-                    <Link
-                      to={box.link}
-                      className="block text-brand-light/70 hover:text-primary-foreground py-2 text-sm transition-colors"
-                    >
-                      Dowiedz się więcej →
-                    </Link>
+              <AnimatedCard key={box.label} delay={i * 150}>
+                <div
+                  className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl ${
+                    box.featured
+                      ? "border-accent bg-brand/50 scale-[1.03]"
+                      : "border-brand/40 bg-brand/30"
+                  }`}
+                >
+                  {box.featured && (
+                    <div className="bg-accent text-accent-foreground text-center py-1.5 text-xs font-bold tracking-wide uppercase">
+                      Najpopularniejszy
+                    </div>
+                  )}
+                  <div className="p-6 text-center">
+                    <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
+                    <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
+                    <h3 className="text-lg font-bold text-primary-foreground mb-1">{box.name}</h3>
+                    <p className="text-sm text-brand-light/70 mb-1">{box.size}</p>
+                    <p className="text-sm text-brand-light/80 mb-4">{box.desc}</p>
+                    <div className="mb-4">
+                      <span className="text-3xl font-extrabold text-primary-foreground">{box.price}</span>
+                      <span className="text-brand-light/60 text-sm"> zł/mies.</span>
+                      <div className="text-xs text-brand-light/50 line-through">{box.priceRegular} zł/mies.</div>
+                      <div className="text-xs text-accent font-semibold mt-1">-50% przez pierwszy miesiąc</div>
+                    </div>
+                    <div className="space-y-2">
+                      <a
+                        href={box.ctaLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block gradient-brand text-foreground py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity"
+                      >
+                        Wynajmij teraz
+                      </a>
+                      <Link
+                        to={box.link}
+                        className="block text-brand-light/70 hover:text-primary-foreground py-2 text-sm transition-colors"
+                      >
+                        Dowiedz się więcej →
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -298,13 +283,7 @@ const Index = () => {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {segments.map((seg, i) => (
-              <motion.div
-                key={seg.href}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <AnimatedCard key={seg.href} delay={i * 100}>
                 <Link
                   to={seg.href}
                   className="block p-6 rounded-xl border border-border bg-card hover:border-brand hover:shadow-lg transition-all group"
@@ -313,7 +292,7 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">{seg.desc}</p>
                   <span className="text-brand text-sm font-semibold mt-3 inline-block">Dowiedz się więcej →</span>
                 </Link>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
