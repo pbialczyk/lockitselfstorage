@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import heroImage from "@/assets/hero-storage.webp";
@@ -116,6 +117,14 @@ const segments = [
 ];
 
 const Index = () => {
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    // Defer video loading until after initial paint
+    const timer = setTimeout(() => setShowVideo(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Layout
       canonical="/"
@@ -123,16 +132,25 @@ const Index = () => {
     >
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroImage}
+        {/* Show poster image immediately, defer video */}
+        <img
+          src={heroImage}
+          alt=""
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/video/hero-bg.mp4" type="video/mp4" />
-        </video>
+          aria-hidden="true"
+        />
+        {showVideo && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/video/hero-bg.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
