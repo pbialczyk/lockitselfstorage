@@ -126,7 +126,6 @@ const Index = () => {
   }, []);
 
   return (
-  return (
     <Layout
       canonical="/"
       jsonLd={LOCAL_BUSINESS_JSONLD}
