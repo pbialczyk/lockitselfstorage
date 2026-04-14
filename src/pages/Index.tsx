@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import heroImage from "@/assets/hero-storage.webp";
