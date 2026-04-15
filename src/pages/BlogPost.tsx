@@ -127,8 +127,10 @@ const BlogPost = () => {
 
         <section className="section-padding bg-background">
           <div className="container-narrow mx-auto max-w-3xl">
-            {post.content.map((p, i) => {
-              const formatted = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            {post.content.map((item, i) => {
+              const formatted = item.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+              if (item.type === "h2") return <h2 key={i} className="text-2xl font-bold text-foreground mt-8 mb-4">{item.text}</h2>;
+              if (item.type === "h3") return <h3 key={i} className="text-xl font-semibold text-foreground mt-6 mb-3">{item.text}</h3>;
               return (
                 <p key={i} className="text-foreground leading-relaxed text-lg mb-6" dangerouslySetInnerHTML={{ __html: formatted }} />
               );
