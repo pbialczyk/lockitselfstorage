@@ -7,6 +7,7 @@ import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
+import ReviewsSection from "@/components/ReviewsSection";
 import {
   Accordion,
   AccordionContent,
