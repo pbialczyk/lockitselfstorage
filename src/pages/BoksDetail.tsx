@@ -71,17 +71,28 @@ const BoksDetail = () => {
       title={boks.h1}
       description={boks.desc}
       canonical={`/boksy/${slug}`}
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "Service",
-        name: boks.h1,
-        description: boks.desc,
-        provider: {
-          "@type": "SelfStorage",
-          name: "LOCKIT self storage",
-          address: { "@type": "PostalAddress", streetAddress: "ul. Gdańska 14C", addressLocality: "Szczecin", postalCode: "70-661", addressCountry: "PL" },
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: boks.h1,
+          description: boks.desc,
+          provider: {
+            "@type": "SelfStorage",
+            name: "LOCKIT self storage",
+            address: { "@type": "PostalAddress", streetAddress: "ul. Gdańska 14C", addressLocality: "Szczecin", postalCode: "70-661", addressCountry: "PL" },
+          },
         },
-      }}
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Strona główna", item: "https://lockit.pl" },
+            { "@type": "ListItem", position: 2, name: "Boksy i cennik", item: "https://lockit.pl/boksy" },
+            { "@type": "ListItem", position: 3, name: boks.h1, item: `https://lockit.pl/boksy/${slug}` },
+          ],
+        },
+      ]}
     >
       <section className="section-padding bg-brand-deep">
         <div className="container-narrow mx-auto text-center">
@@ -117,7 +128,7 @@ const BoksDetail = () => {
           </div>
 
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Zarezerwuj {boks.name} już teraz</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">Wynajmij {boks.name} już teraz</h2>
             <p className="text-muted-foreground mb-6">Wynajem online w 5 minut. Bez wizyt, bez zbędnych formalności.</p>
             <a
               href={boks.ctaLink}
