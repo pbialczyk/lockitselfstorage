@@ -33,6 +33,13 @@ const Poradnik = () => (
     title="Poradnik self storage — blog LOCKIT"
     description="Porady dotyczące self storage, przechowywania rzeczy, organizacji przestrzeni. Blog LOCKIT self storage Szczecin."
     canonical="/poradnik"
+    jsonLd={{
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "Poradnik LOCKIT self storage",
+      url: "https://lockit.pl/poradnik",
+      publisher: { "@type": "Organization", name: "LOCKIT self storage" },
+    }}
   >
     <section className="section-padding bg-brand-deep">
       <div className="container-wide mx-auto text-center">

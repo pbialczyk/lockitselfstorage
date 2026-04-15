@@ -4,7 +4,7 @@ interface SEOHeadProps {
   title?: string;
   description?: string;
   canonical?: string;
-  jsonLd?: object;
+  jsonLd?: object | object[];
 }
 
 const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
@@ -53,20 +53,23 @@ const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
     }
 
     // JSON-LD
-    const existingScript = document.querySelector('script[data-seo-jsonld]');
-    if (existingScript) existingScript.remove();
+    const existingScripts = document.querySelectorAll('script[data-seo-jsonld]');
+    existingScripts.forEach(s => s.remove());
 
     if (jsonLd) {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.setAttribute("data-seo-jsonld", "true");
-      script.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(script);
+      const items = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+      items.forEach((item) => {
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.setAttribute("data-seo-jsonld", "true");
+        script.textContent = JSON.stringify(item);
+        document.head.appendChild(script);
+      });
     }
 
     return () => {
-      const script = document.querySelector('script[data-seo-jsonld]');
-      if (script) script.remove();
+      const scripts = document.querySelectorAll('script[data-seo-jsonld]');
+      scripts.forEach(s => s.remove());
     };
   }, [fullTitle, metaDescription, canonical, jsonLd]);
 

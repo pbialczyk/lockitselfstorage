@@ -88,12 +88,23 @@ const BlogPost = () => {
       title={post.title}
       description={post.description}
       canonical={`/poradnik/${slug}`}
-      jsonLd={{
-        "@context": "https://schema.org", "@type": "Article",
-        headline: post.h1, datePublished: post.date,
-        author: { "@type": "Organization", name: "LOCKIT self storage" },
-        publisher: { "@type": "Organization", name: "LOCKIT self storage" },
-      }}
+      jsonLd={[
+        {
+          "@context": "https://schema.org", "@type": "Article",
+          headline: post.h1, datePublished: post.date,
+          author: { "@type": "Organization", name: "LOCKIT self storage" },
+          publisher: { "@type": "Organization", name: "LOCKIT self storage" },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Strona główna", item: "https://lockit.pl" },
+            { "@type": "ListItem", position: 2, name: "Poradnik", item: "https://lockit.pl/poradnik" },
+            { "@type": "ListItem", position: 3, name: post.h1, item: `https://lockit.pl/poradnik/${slug}` },
+          ],
+        },
+      ]}
     >
       <article>
         <section className="section-padding bg-brand-deep">

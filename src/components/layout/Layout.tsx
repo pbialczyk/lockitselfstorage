@@ -8,7 +8,7 @@ interface LayoutProps {
   title?: string;
   description?: string;
   canonical?: string;
-  jsonLd?: object;
+  jsonLd?: object | object[];
 }
 
 const Layout = ({ children, title, description, canonical, jsonLd }: LayoutProps) => {
