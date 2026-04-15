@@ -39,6 +39,8 @@ const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
     setOg("og:description", metaDescription);
     setOg("og:type", "website");
     setOg("og:locale", "pl_PL");
+    setOg("og:site_name", "LOCKIT self storage Szczecin");
+    setOg("og:url", `https://lockit.pl${canonical || "/"}`);
 
     if (canonical) {
       let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;

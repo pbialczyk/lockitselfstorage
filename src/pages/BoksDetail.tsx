@@ -117,7 +117,7 @@ const BoksDetail = () => {
           </div>
 
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Zarezerwuj {boks.name} już teraz</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">Wynajmij {boks.name} już teraz</h2>
             <p className="text-muted-foreground mb-6">Wynajem online w 5 minut. Bez wizyt, bez zbędnych formalności.</p>
             <a
               href={boks.ctaLink}
