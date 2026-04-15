@@ -177,7 +177,7 @@ const Index = () => {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 animate-fade-in-up">
             Self storage Szczecin —{" "}
-            <span className="text-gradient-brand">magazyn na miarę Twoich potrzeb</span>
+            <span className="text-gradient-brand">Twój boks magazynowy 24/7</span>
           </h1>
           <p className="text-lg sm:text-xl text-hero-muted mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7. Wynajem online w 5 minut.
