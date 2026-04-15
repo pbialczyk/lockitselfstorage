@@ -297,13 +297,13 @@ const Index = () => {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {segments.map((seg, i) => (
-              <AnimatedCard key={seg.href} delay={i * 100}>
+              <AnimatedCard key={seg.href} delay={i * 100} className="h-full">
                 <Link
                   to={seg.href}
-                  className="block p-6 rounded-xl border border-border bg-card hover:border-brand hover:shadow-lg transition-all group"
+                  className="block p-6 rounded-xl border border-border bg-card hover:border-brand hover:shadow-lg transition-all group h-full flex flex-col"
                 >
                   <h3 className="font-bold text-foreground group-hover:text-brand transition-colors mb-2">{seg.title}</h3>
-                  <p className="text-sm text-muted-foreground">{seg.desc}</p>
+                  <p className="text-sm text-muted-foreground flex-1">{seg.desc}</p>
                   <span className="text-brand text-sm font-semibold mt-3 inline-block">Dowiedz się więcej →</span>
                 </Link>
               </AnimatedCard>
