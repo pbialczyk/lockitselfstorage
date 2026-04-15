@@ -237,9 +237,9 @@ const Index = () => {
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {boxes.map((box, i) => (
-              <AnimatedCard key={box.label} delay={i * 150}>
+              <AnimatedCard key={box.label} delay={i * 150} className="h-full">
                 <div
-                  className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl ${
+                  className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col ${
                     box.featured
                       ? "border-accent bg-brand/50 scale-[1.03]"
                       : "border-brand/40 bg-brand/30"
@@ -250,19 +250,19 @@ const Index = () => {
                       Najpopularniejszy
                     </div>
                   )}
-                  <div className="p-6 text-center">
+                  <div className="p-6 text-center flex flex-col flex-1">
                     <img src={box.label === "S" ? boksS : box.label === "M" ? boksM : boksL} alt={box.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
                     <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
                     <h3 className="text-lg font-bold text-primary-foreground mb-1">{box.name}</h3>
                     <p className="text-sm text-brand-light/70 mb-1">{box.size}</p>
-                    <p className="text-sm text-brand-light/80 mb-4">{box.desc}</p>
+                    <p className="text-sm text-brand-light/80 mb-4 flex-1">{box.desc}</p>
                     <div className="mb-4">
                       <span className="text-3xl font-extrabold text-primary-foreground">{box.price}</span>
                       <span className="text-brand-light/60 text-sm"> zł/mies.</span>
                       <div className="text-xs text-brand-light/50 line-through">{box.priceRegular} zł/mies.</div>
                       <div className="text-xs text-accent font-semibold mt-1">-50% przez pierwszy miesiąc</div>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 mt-auto">
                       <a
                         href={box.ctaLink}
                         target="_blank"
