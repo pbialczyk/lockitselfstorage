@@ -18,7 +18,8 @@ const Lokalizacje = () => (
     </section>
 
     <section className="section-padding bg-background">
-      <div className="container-narrow mx-auto">
+      <div className="container-narrow mx-auto space-y-6">
+        {/* Szczecin */}
         <Link
           to="/self-storage-szczecin"
           className="block bg-card border-2 border-brand rounded-2xl overflow-hidden hover:shadow-xl transition-all max-w-2xl mx-auto"
@@ -45,6 +46,56 @@ const Lokalizacje = () => (
             <div className="text-brand font-semibold text-sm">Zobacz szczegóły lokalizacji →</div>
           </div>
         </Link>
+
+        {/* Poznań */}
+        <div className="block bg-card border-2 border-border rounded-2xl overflow-hidden max-w-2xl mx-auto opacity-75">
+          <div className="bg-muted text-foreground p-6">
+            <div className="flex items-center gap-3 mb-2">
+              <MapPin className="w-6 h-6" />
+              <h2 className="text-2xl font-extrabold">Poznań</h2>
+            </div>
+            <p className="text-muted-foreground">Otwieramy się wkrótce</p>
+          </div>
+          <div className="p-6">
+            <div className="grid sm:grid-cols-3 gap-4 mb-4">
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Clock className="w-4 h-4 text-brand" /> Dostęp 24/7
+              </div>
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Shield className="w-4 h-4 text-brand" /> Monitoring
+              </div>
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Shield className="w-4 h-4 text-brand" /> Ubezpieczenie
+              </div>
+            </div>
+            <div className="inline-block bg-brand/10 text-brand font-semibold text-sm px-3 py-1 rounded-full">Wkrótce</div>
+          </div>
+        </div>
+
+        {/* Gdańsk */}
+        <div className="block bg-card border-2 border-border rounded-2xl overflow-hidden max-w-2xl mx-auto opacity-75">
+          <div className="bg-muted text-foreground p-6">
+            <div className="flex items-center gap-3 mb-2">
+              <MapPin className="w-6 h-6" />
+              <h2 className="text-2xl font-extrabold">Gdańsk</h2>
+            </div>
+            <p className="text-muted-foreground">Otwieramy się wkrótce</p>
+          </div>
+          <div className="p-6">
+            <div className="grid sm:grid-cols-3 gap-4 mb-4">
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Clock className="w-4 h-4 text-brand" /> Dostęp 24/7
+              </div>
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Shield className="w-4 h-4 text-brand" /> Monitoring
+              </div>
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <Shield className="w-4 h-4 text-brand" /> Ubezpieczenie
+              </div>
+            </div>
+            <div className="inline-block bg-brand/10 text-brand font-semibold text-sm px-3 py-1 rounded-full">Wkrótce</div>
+          </div>
+        </div>
       </div>
     </section>
   </Layout>
