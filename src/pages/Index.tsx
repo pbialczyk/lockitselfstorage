@@ -299,6 +299,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* REVIEWS */}
+      <ReviewsSection />
+
       {/* FAQ */}
       <section className="section-padding bg-secondary" id="faq">
         <div className="container-narrow mx-auto max-w-3xl">
