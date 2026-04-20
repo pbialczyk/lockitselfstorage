@@ -13,7 +13,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
+const reviewsImport = () => import("@/components/ReviewsSection");
+const ReviewsSection = lazy(reviewsImport);
 
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
