@@ -7,6 +7,8 @@ import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
 
+const FAQAccordion = lazy(() => import("@/components/FAQAccordion"));
+
 const reviewsImport = () => import("@/components/ReviewsSection");
 const ReviewsSection = lazy(reviewsImport);
 
