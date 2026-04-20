@@ -162,10 +162,7 @@ const Index = () => {
     let timeoutId: number | undefined;
 
     if ("requestIdleCallback" in window) {
-      idleId = (window as Window).requestIdleCallback(
-        () => setShowVideo(true),
-        { timeout: 3000 }
-      );
+      idleId = window.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
     } else {
       timeoutId = window.setTimeout(() => setShowVideo(true), 2000);
     }
