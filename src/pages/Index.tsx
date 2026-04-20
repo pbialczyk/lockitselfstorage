@@ -155,8 +155,24 @@ const Index = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowVideo(true), 2000);
-    return () => clearTimeout(timer);
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) return;
+
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
+    } else {
+      timeoutId = setTimeout(() => setShowVideo(true), 2000) as unknown as number;
+    }
+
+    return () => {
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        (window as Window).cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -189,6 +205,7 @@ const Index = () => {
             loop
             muted
             playsInline
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/video/hero-bg.mp4" type="video/mp4" />
