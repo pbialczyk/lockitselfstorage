@@ -6,12 +6,6 @@ import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const reviewsImport = () => import("@/components/ReviewsSection");
 const ReviewsSection = lazy(reviewsImport);
