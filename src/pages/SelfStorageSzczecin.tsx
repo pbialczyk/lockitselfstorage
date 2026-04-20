@@ -73,7 +73,7 @@ const SelfStorageSzczecin = () => (
               <h2 className="text-2xl font-bold text-foreground mb-4">Mapa i dojazd</h2>
               <div className="bg-card border border-border rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376.5!2d14.5528!3d53.4285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI1JzQyLjYiTiAxNMKwMzMnMTAuMSJF!5e0!3m2!1spl!2spl!4v1"
+                  src="https://maps.google.com/maps?q=Gda%C5%84ska%2014C%2C%2070-661%20Szczecin&t=m&z=16&output=embed&hl=pl"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
