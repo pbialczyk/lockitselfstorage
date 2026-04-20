@@ -360,22 +360,9 @@ const Index = () => {
           <h2 className="text-center text-3xl font-extrabold text-foreground mb-12">
             Pytania i odpowiedzi
           </h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqItems.map((item, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-card rounded-xl border border-border px-6 overflow-hidden"
-              >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-brand py-5">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <Suspense fallback={<div className="h-64" />}>
+            <FAQAccordion items={faqItems} />
+          </Suspense>
           <div className="text-center mt-8">
             <Link to="/faq" className="text-brand font-semibold hover:underline">
               Zobacz wszystkie pytania →
