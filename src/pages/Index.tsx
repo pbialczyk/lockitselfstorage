@@ -182,19 +182,21 @@ const Index = () => {
         <picture className="md:hidden">
           <source
             type="image/avif"
-            srcSet={`${heroAvif640} 640w, ${heroAvif1024} 1024w, ${heroAvif1536} 1536w, ${heroAvif1920} 1920w`}
-            sizes="100vw"
+            srcSet="/hero/hero-storage-640.avif 640w, /hero/hero-storage-1024.avif 1024w"
+            sizes="(max-width: 640px) 100vw, 640px"
           />
           <source
             type="image/webp"
-            srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp1536} 1536w, ${heroWebp1920} 1920w`}
-            sizes="100vw"
+            srcSet="/hero/hero-storage-640.webp 640w, /hero/hero-storage-1024.webp 1024w"
+            sizes="(max-width: 640px) 100vw, 640px"
           />
           <img
-            src={heroImage}
+            src="/hero/hero-storage-640.avif"
             alt=""
             fetchPriority="high"
             decoding="async"
+            width={640}
+            height={853}
             className="md:hidden absolute inset-0 w-full h-full object-cover"
             aria-hidden="true"
           />
