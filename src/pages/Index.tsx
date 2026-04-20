@@ -345,7 +345,9 @@ const Index = () => {
       </section>
 
       {/* REVIEWS */}
-      <ReviewsSection />
+      <Suspense fallback={<div className="h-32" />}>
+        <ReviewsSection />
+      </Suspense>
 
       {/* FAQ */}
       <section className="section-padding bg-secondary" id="faq">
