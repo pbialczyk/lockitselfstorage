@@ -1,14 +1,5 @@
 import { useState, useEffect } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
-import heroImage from "@/assets/hero-storage.webp";
-import heroAvif640 from "@/assets/hero-storage-640.avif";
-import heroAvif1024 from "@/assets/hero-storage-1024.avif";
-import heroAvif1536 from "@/assets/hero-storage-1536.avif";
-import heroAvif1920 from "@/assets/hero-storage-1920.avif";
-import heroWebp640 from "@/assets/hero-storage-640.webp";
-import heroWebp1024 from "@/assets/hero-storage-1024.webp";
-import heroWebp1536 from "@/assets/hero-storage-1536.webp";
-import heroWebp1920 from "@/assets/hero-storage-1920.webp";
 import boksS from "@/assets/boks-s.webp";
 import boksM from "@/assets/boks-m.webp";
 import boksL from "@/assets/boks-l.webp";
