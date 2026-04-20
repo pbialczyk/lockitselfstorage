@@ -13,7 +13,8 @@ const Logo = ({ className = "", variant = "light" }: LogoProps) => {
       alt="Lockit Self Storage"
       width={181}
       height={70}
-      loading="lazy"
+      loading="eager"
+      fetchPriority="high"
       decoding="async"
       className={`h-10 w-auto ${className}`}
     />
