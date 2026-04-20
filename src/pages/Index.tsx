@@ -161,11 +161,10 @@ const Index = () => {
     let idleId: number | undefined;
     let timeoutId: number | undefined;
 
-    const w = window;
-    if ("requestIdleCallback" in w) {
-      idleId = w.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
     } else {
-      timeoutId = w.setTimeout(() => setShowVideo(true), 2000);
+      timeoutId = setTimeout(() => setShowVideo(true), 2000) as unknown as number;
     }
 
     return () => {
