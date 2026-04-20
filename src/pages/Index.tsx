@@ -1,14 +1,5 @@
 import { useState, useEffect } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
-import heroImage from "@/assets/hero-storage.webp";
-import heroAvif640 from "@/assets/hero-storage-640.avif";
-import heroAvif1024 from "@/assets/hero-storage-1024.avif";
-import heroAvif1536 from "@/assets/hero-storage-1536.avif";
-import heroAvif1920 from "@/assets/hero-storage-1920.avif";
-import heroWebp640 from "@/assets/hero-storage-640.webp";
-import heroWebp1024 from "@/assets/hero-storage-1024.webp";
-import heroWebp1536 from "@/assets/hero-storage-1536.webp";
-import heroWebp1920 from "@/assets/hero-storage-1920.webp";
 import boksS from "@/assets/boks-s.webp";
 import boksM from "@/assets/boks-m.webp";
 import boksL from "@/assets/boks-l.webp";
@@ -182,19 +173,21 @@ const Index = () => {
         <picture className="md:hidden">
           <source
             type="image/avif"
-            srcSet={`${heroAvif640} 640w, ${heroAvif1024} 1024w, ${heroAvif1536} 1536w, ${heroAvif1920} 1920w`}
-            sizes="100vw"
+            srcSet="/hero/hero-storage-640.avif 640w, /hero/hero-storage-1024.avif 1024w"
+            sizes="(max-width: 640px) 100vw, 640px"
           />
           <source
             type="image/webp"
-            srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp1536} 1536w, ${heroWebp1920} 1920w`}
-            sizes="100vw"
+            srcSet="/hero/hero-storage-640.webp 640w, /hero/hero-storage-1024.webp 1024w"
+            sizes="(max-width: 640px) 100vw, 640px"
           />
           <img
-            src={heroImage}
+            src="/hero/hero-storage-640.avif"
             alt=""
             fetchPriority="high"
             decoding="async"
+            width={640}
+            height={853}
             className="md:hidden absolute inset-0 w-full h-full object-cover"
             aria-hidden="true"
           />
