@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import boksS from "@/assets/boks-s.webp";
 import boksM from "@/assets/boks-m.webp";
@@ -6,13 +6,14 @@ import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
-import ReviewsSection from "@/components/ReviewsSection";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
 
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
@@ -344,7 +345,9 @@ const Index = () => {
       </section>
 
       {/* REVIEWS */}
-      <ReviewsSection />
+      <Suspense fallback={<div className="h-32" />}>
+        <ReviewsSection />
+      </Suspense>
 
       {/* FAQ */}
       <section className="section-padding bg-secondary" id="faq">
