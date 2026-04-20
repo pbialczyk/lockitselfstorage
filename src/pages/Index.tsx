@@ -176,7 +176,7 @@ const Index = () => {
   return (
     <Layout canonical="/" jsonLd={LOCAL_BUSINESS_JSONLD}>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
         <picture className="md:hidden">
           <source
             type="image/avif"
