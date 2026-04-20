@@ -163,13 +163,26 @@ const Index = () => {
     <Layout canonical="/" jsonLd={LOCAL_BUSINESS_JSONLD}>
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <img
-          src={heroImage}
-          alt=""
-          fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover"
-          aria-hidden="true"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={`${heroAvif640} 640w, ${heroAvif1024} 1024w, ${heroAvif1536} 1536w, ${heroAvif1920} 1920w`}
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp1536} 1536w, ${heroWebp1920} 1920w`}
+            sizes="100vw"
+          />
+          <img
+            src={heroImage}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </picture>
         {showVideo && (
           <video
             autoPlay
