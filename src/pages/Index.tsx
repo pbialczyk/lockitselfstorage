@@ -205,6 +205,7 @@ const Index = () => {
             loop
             muted
             playsInline
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/video/hero-bg.mp4" type="video/mp4" />
