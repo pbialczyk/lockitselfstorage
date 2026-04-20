@@ -13,7 +13,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
+const reviewsImport = () => import("@/components/ReviewsSection");
+const ReviewsSection = lazy(reviewsImport);
 
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
@@ -147,6 +148,14 @@ const Index = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
+    // Warm up ReviewsSection chunk in parallel with main bundle to shorten critical chain
+    const warmReviews = () => { reviewsImport().catch(() => {}); };
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(warmReviews, { timeout: 1500 });
+    } else {
+      setTimeout(warmReviews, 200);
+    }
+
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     if (!isDesktop) return;
 
