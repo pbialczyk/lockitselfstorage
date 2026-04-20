@@ -1,63 +1,42 @@
 
-## Plan: Optymalizacja wideo hero (punkt 1)
+## Plan: Przywrócenie hero z pomarańczowymi drzwiami → zielona wersja
 
-Cel: na mobile (<768px) NIE ładować pliku `/video/hero-bg.mp4` w ogóle, na desktop opóźnić jego start do `requestIdleCallback` (zamiast obecnego `setTimeout(2000)`), żeby nie konkurował o pasmo z LCP image.
+### Sytuacja
+Aktualnie na mobile hero pokazuje zdjęcie srebrnych kontenerów (`/public/hero/hero-storage-*.{avif,webp}`). Wcześniej było zdjęcie wnętrza self-storage z pomarańczowymi drzwiami boksów. Użytkownik chce wrócić do tamtego zdjęcia, ale przekolorować pomarańcz na markowy zielony `#88C22A` (HSL 86 65% 46%).
 
-### Stan obecny (`src/pages/Index.tsx`)
-```tsx
-const [showVideo, setShowVideo] = useState(false);
-useEffect(() => {
-  const timer = setTimeout(() => setShowVideo(true), 2000);
-  return () => clearTimeout(timer);
-}, []);
-```
-Problem: wideo ładuje się też na mobile po 2s; `setTimeout` uruchamia się nawet gdy główny wątek jest jeszcze zajęty hydratacją/parsowaniem.
+### Problem
+Stara wersja zdjęcia (z pomarańczowymi drzwiami) została **nadpisana** w poprzednim kroku — pliki `src/assets/hero-storage-*.{avif,webp,jpg}` oraz `public/hero/hero-storage-*` zawierają już tylko nową wersję ze srebrnymi kontenerami. Nie mam dostępu do oryginalnego pliku z pomarańczowymi drzwiami w repo.
 
-### Zmiany
+### Co potrzebuję od użytkownika
+Żeby zrealizować zadanie, muszę dostać oryginalne zdjęcie wnętrza z pomarańczowymi drzwiami (jako upload). Wtedy:
 
-**1. `src/pages/Index.tsx` — logika ładowania wideo**
+### Kroki implementacji (po otrzymaniu zdjęcia)
 
-Zastąpić obecny `useEffect` warunkową logiką:
-- Na mount sprawdzić `window.matchMedia('(min-width: 768px)').matches` — jeżeli mobile, w ogóle nie ustawiamy `showVideo`.
-- Na desktop użyć `window.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 })` z fallbackiem do `setTimeout(2000)` w przeglądarkach bez idle callback (Safari).
-- Zwrócić cleanup, który anuluje `cancelIdleCallback` / `clearTimeout`.
-- Dodać atrybut `preload="none"` do `<video>`, żeby przeglądarka nie pobierała metadanych dopóki element nie zostanie zamontowany.
-- Dodać `poster` (obecny hero image lub pominąć — image jest już pod spodem w `<picture>`).
+1. **Pobranie uploadu** do `/tmp/hero-original.jpg` (`lov-copy`).
 
-**2. Skutki uboczne / sprawdzenia**
-- Na mobile użytkownik widzi statyczny hero (już zoptymalizowany AVIF/WebP responsywnie) — wizualnie OK, plik wideo (~kilka MB) w ogóle nie startuje.
-- Na desktop wideo dociąża się dopiero gdy główny wątek jest bezczynny → LCP nie konkuruje z wideo o pasmo.
-- Brak zmian w `index.html`, brak zmian w innych komponentach.
+2. **Przekolorowanie pomarańczowego na zielony** — skrypt Python (Pillow + numpy):
+   - Konwersja RGB → HSV.
+   - Maska: pixele o odcieniu w zakresie pomarańczowym (H ≈ 10–35°) z saturacją >0.3.
+   - Przesunięcie odcienia tych pixeli do zielonego brand (`H ≈ 78°` co odpowiada HSL 86° po normalizacji HSV/HSL — dokładną wartość dobiorę testowo, żeby trafić w `#88C22A`).
+   - Lekkie zachowanie luminancji, żeby drzwi wyglądały naturalnie (nie płasko).
 
-### Szkic kodu
-```tsx
-useEffect(() => {
-  const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-  if (!isDesktop) return;
+3. **Generacja wariantów responsywnych** (te same rozmiary co teraz):
+   - `hero-storage-{640,1024,1536,1920}.{avif,webp}` 
+   - Fallback `hero-storage.jpg` + `hero-storage.webp`.
+   - Mobile-first: 640w AVIF priorytet (~8 KB target).
 
-  let idleId: number | undefined;
-  let timeoutId: number | undefined;
+4. **Nadpisanie** plików w `src/assets/` oraz `public/hero/` (zachowuje obecną strukturę — bez zmian w `index.html` preload ani w `Index.tsx`).
 
-  if ('requestIdleCallback' in window) {
-    idleId = window.requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
-  } else {
-    timeoutId = window.setTimeout(() => setShowVideo(true), 2000);
-  }
+5. **QA** — render każdego wariantu jako PNG i weryfikacja, że:
+   - Drzwi są zielone w odcieniu zbliżonym do `#88C22A`.
+   - Reszta zdjęcia (ściany, podłoga, oświetlenie) nie została przebarwiona.
+   - Mobile 640w wygląda ostro.
 
-  return () => {
-    if (idleId !== undefined && 'cancelIdleCallback' in window) {
-      window.cancelIdleCallback(idleId);
-    }
-    if (timeoutId !== undefined) clearTimeout(timeoutId);
-  };
-}, []);
-```
-A w JSX dodać `preload="none"` do `<video>`.
+### Co nie ulega zmianie
+- `index.html` — preload nadal wskazuje `/hero/hero-storage-640.avif`.
+- `src/pages/Index.tsx` — `<picture className="md:hidden">` zostaje bez zmian.
+- `.hero-overlay` opacity — bez zmian.
+- Desktop nadal pokazuje wideo.
 
-### TypeScript
-`requestIdleCallback` jest w lib `dom`, więc bez dodatkowych typów. Użyję `'requestIdleCallback' in window` jako runtime guard (Safari nadal nie ma).
-
-### Test po wdrożeniu
-- DevTools mobile (390px) → Network: brak requestu `hero-bg.mp4`.
-- DevTools desktop (≥768px) → wideo ładuje się ~1–3s po idle.
-- Brak regresji wizualnej — fallback `<picture>` zostaje.
+### Pytanie do Ciebie
+Prześlij oryginalne zdjęcie wnętrza self storage z pomarańczowymi drzwiami (jako upload). Jak tylko je dostanę, wykonam przekolorowanie i podmianę plików w jednym kroku.
