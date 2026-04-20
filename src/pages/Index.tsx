@@ -155,8 +155,27 @@ const Index = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowVideo(true), 2000);
-    return () => clearTimeout(timer);
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) return;
+
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    if ("requestIdleCallback" in window) {
+      idleId = (window as Window).requestIdleCallback(
+        () => setShowVideo(true),
+        { timeout: 3000 }
+      );
+    } else {
+      timeoutId = window.setTimeout(() => setShowVideo(true), 2000);
+    }
+
+    return () => {
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        (window as Window).cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
