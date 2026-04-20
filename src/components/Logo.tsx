@@ -1,4 +1,4 @@
-import lockitLogo from "@/assets/lockit-logo.webp";
+import lockitLogo from "@/assets/lockit-logo-color.png";
 
 interface LogoProps {
   className?: string;
@@ -12,7 +12,7 @@ const Logo = ({ className = "", variant = "light" }: LogoProps) => {
       alt="Lockit Self Storage"
       width={181}
       height={70}
-      className={`h-10 w-auto ${variant === "light" ? "brightness-0 invert" : ""} ${className}`}
+      className={`h-10 w-auto ${className}`}
     />
   );
 };
