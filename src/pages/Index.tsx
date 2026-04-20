@@ -179,7 +179,7 @@ const Index = () => {
     <Layout canonical="/" jsonLd={LOCAL_BUSINESS_JSONLD}>
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <picture>
+        <picture className="md:hidden">
           <source
             type="image/avif"
             srcSet={`${heroAvif640} 640w, ${heroAvif1024} 1024w, ${heroAvif1536} 1536w, ${heroAvif1920} 1920w`}
@@ -195,7 +195,7 @@ const Index = () => {
             alt=""
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="md:hidden absolute inset-0 w-full h-full object-cover"
             aria-hidden="true"
           />
         </picture>
