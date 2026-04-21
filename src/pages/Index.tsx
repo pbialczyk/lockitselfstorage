@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import boksS from "@/assets/boks-s.webp";
 import boksM from "@/assets/boks-m.webp";
@@ -6,12 +6,8 @@ import boksL from "@/assets/boks-l.webp";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
-
-// Lazy-loaded below-fold components
-const FAQAccordion = lazy(() => import("@/components/FAQAccordion"));
-
-const reviewsImport = () => import("@/components/ReviewsSection");
-const ReviewsSection = lazy(reviewsImport);
+import FAQAccordion from "@/components/FAQAccordion";
+import ReviewsSection from "@/components/ReviewsSection";
 
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
@@ -145,13 +141,6 @@ const Index = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    // Warm up ReviewsSection chunk in parallel with main bundle to shorten critical chain
-    const warmReviews = () => { reviewsImport().catch(() => {}); };
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(warmReviews, { timeout: 1500 });
-    } else {
-      setTimeout(warmReviews, 200);
-    }
 
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     if (!isDesktop) return;
@@ -351,9 +340,7 @@ const Index = () => {
       </section>
 
       {/* REVIEWS */}
-      <Suspense fallback={<div className="h-32" />}>
-        <ReviewsSection />
-      </Suspense>
+      <ReviewsSection />
 
       {/* FAQ */}
       <section className="section-padding bg-secondary" id="faq">
@@ -361,9 +348,7 @@ const Index = () => {
           <h2 className="text-center text-3xl font-extrabold text-foreground mb-12">
             Pytania i odpowiedzi
           </h2>
-          <Suspense fallback={<div className="h-64" />}>
-            <FAQAccordion items={faqItems} />
-          </Suspense>
+          <FAQAccordion items={faqItems} />
           <div className="text-center mt-8">
             <Link to="/faq" className="text-brand font-semibold hover:underline">
               Zobacz wszystkie pytania →
