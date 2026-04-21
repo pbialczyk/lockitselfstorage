@@ -1,9 +1,5 @@
 import { lazy, Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 
 // Lazy-loaded routes for code splitting
@@ -22,8 +18,6 @@ const Kontakt = lazy(() => import("./pages/Kontakt"));
 const PolitykaPrywatnosci = lazy(() => import("./pages/PolitykaPrywatnosci"));
 const Ekspansja = lazy(() => import("./pages/Ekspansja"));
 
-const queryClient = new QueryClient();
-
 const PageFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="w-8 h-8 border-4 border-brand border-t-transparent rounded-full animate-spin" />
@@ -31,39 +25,33 @@ const PageFallback = () => (
 );
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Suspense fallback={<PageFallback />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/boksy" element={<Boksy />} />
-            <Route path="/boksy/:slug" element={<BoksDetail />} />
-            <Route path="/lokalizacje" element={<Lokalizacje />} />
-            <Route path="/self-storage-szczecin" element={<SelfStorageSzczecin />} />
-            <Route path="/dla-klientow-indywidualnych" element={<SegmentPage />} />
-            <Route path="/dla-firm" element={<SegmentPage />} />
-            <Route path="/remont-przeprowadzka" element={<SegmentPage />} />
-            <Route path="/archiwum-dokumentow" element={<SegmentPage />} />
-            <Route path="/dla-studentow" element={<SegmentPage />} />
-            <Route path="/transport-przeprowadzka" element={<ServicePage />} />
-            <Route path="/ubezpieczenie" element={<ServicePage />} />
-            <Route path="/pakowanie-organizacja" element={<ServicePage />} />
-            <Route path="/poradnik" element={<Poradnik />} />
-            <Route path="/poradnik/:slug" element={<BlogPost />} />
-            <Route path="/o-nas" element={<ONas />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="/kontakt" element={<Kontakt />} />
-            <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-            <Route path="/ekspansja" element={<Ekspansja />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <BrowserRouter>
+    <Suspense fallback={<PageFallback />}>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/boksy" element={<Boksy />} />
+        <Route path="/boksy/:slug" element={<BoksDetail />} />
+        <Route path="/lokalizacje" element={<Lokalizacje />} />
+        <Route path="/self-storage-szczecin" element={<SelfStorageSzczecin />} />
+        <Route path="/dla-klientow-indywidualnych" element={<SegmentPage />} />
+        <Route path="/dla-firm" element={<SegmentPage />} />
+        <Route path="/remont-przeprowadzka" element={<SegmentPage />} />
+        <Route path="/archiwum-dokumentow" element={<SegmentPage />} />
+        <Route path="/dla-studentow" element={<SegmentPage />} />
+        <Route path="/transport-przeprowadzka" element={<ServicePage />} />
+        <Route path="/ubezpieczenie" element={<ServicePage />} />
+        <Route path="/pakowanie-organizacja" element={<ServicePage />} />
+        <Route path="/poradnik" element={<Poradnik />} />
+        <Route path="/poradnik/:slug" element={<BlogPost />} />
+        <Route path="/o-nas" element={<ONas />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+        <Route path="/ekspansja" element={<Ekspansja />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
+  </BrowserRouter>
 );
 
 export default App;
