@@ -340,9 +340,7 @@ const Index = () => {
       </section>
 
       {/* REVIEWS */}
-      <Suspense fallback={<div className="h-32" />}>
-        <ReviewsSection />
-      </Suspense>
+      <ReviewsSection />
 
       {/* FAQ */}
       <section className="section-padding bg-secondary" id="faq">
@@ -350,9 +348,7 @@ const Index = () => {
           <h2 className="text-center text-3xl font-extrabold text-foreground mb-12">
             Pytania i odpowiedzi
           </h2>
-          <Suspense fallback={<div className="h-64" />}>
-            <FAQAccordion items={faqItems} />
-          </Suspense>
+          <FAQAccordion items={faqItems} />
           <div className="text-center mt-8">
             <Link to="/faq" className="text-brand font-semibold hover:underline">
               Zobacz wszystkie pytania →
