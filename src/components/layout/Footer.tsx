@@ -87,19 +87,35 @@ const Footer = () => {
                 href="https://apps.apple.com/pl/app/lockit-self-storage/id6752020694"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand/30 hover:bg-brand/50 text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                aria-label="Pobierz w App Store"
+                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                App Store
+                <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <span className="flex flex-col leading-tight text-left">
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">Pobierz w</span>
+                  <span className="text-base font-semibold -mt-0.5">App Store</span>
+                </span>
               </a>
               <a
                 href="https://play.google.com/store/apps/details?id=com.sprytki.userportal.lockit&pcampaignid=web_share"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand/30 hover:bg-brand/50 text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                aria-label="Pobierz z Google Play"
+                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.67c-.37-.2-.63-.55-.63-1.02V1.35c0-.47.26-.82.63-1.02L13.54 12 3.18 23.67zm1.44-23L16.7 10.22l-2.85 2.85L4.62.67zM20.16 10.65l-2.6 1.47-3.09-3.1 3.09-3.08 2.6 1.47c.73.41 1.18 1.08 1.18 1.62s-.45 1.21-1.18 1.62zM4.62 23.33l11.08-9.55-2.85-2.85L4.62 23.33z"/></svg>
-                Google Play
+                <svg className="w-6 h-6 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
+                  <path fill="#00C3FF" d="M325.3 234.3 104.3 13.6c-1-1-2.5.1-2 1.5l205.3 222.4z"/>
+                  <path fill="#FF3A44" d="m104.3 498.4 221-221-17.7-19-205.3 222.4c-.5 1.4 1 2.6 2 1.5z"/>
+                  <path fill="#FFE000" d="M464.2 233.4 379.6 184l-71 71 71 71 84.6-49.4c22.4-13.1 22.4-30.1 0-43.2z"/>
+                  <path fill="#00D26A" d="M104.3 13.6c-2.6-1.4-5.6-1.6-8.3-.6L307.6 237.5l71.9-53.5z"/>
+                  <path fill="#00B85C" d="M307.6 274.5 96 499c2.7 1 5.7.8 8.3-.6l275.3-160.9z"/>
+                </svg>
+                <span className="flex flex-col leading-tight text-left">
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">Pobierz z</span>
+                  <span className="text-base font-semibold -mt-0.5">Google Play</span>
+                </span>
               </a>
             </div>
           </div>
