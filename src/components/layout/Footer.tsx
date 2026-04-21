@@ -79,9 +79,18 @@ const Footer = () => {
                 href="https://wynajmij.lockit.pl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand/30 hover:bg-brand/50 text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                aria-label="Otwórz aplikację WWW"
+                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
               >
-                🌐 Aplikacja WWW
+                <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span className="flex flex-col leading-tight text-left">
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">Otwórz</span>
+                  <span className="text-base font-semibold -mt-0.5">Aplikacja WWW</span>
+                </span>
               </a>
               <a
                 href="https://apps.apple.com/pl/app/lockit-self-storage/id6752020694"
