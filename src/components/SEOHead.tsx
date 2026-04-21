@@ -35,6 +35,8 @@ const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
     };
 
     setMeta("description", metaDescription);
+    setMeta("robots", "noindex, nofollow");
+    setMeta("googlebot", "noindex, nofollow");
     setOg("og:title", fullTitle);
     setOg("og:description", metaDescription);
     setOg("og:type", "website");
