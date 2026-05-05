@@ -239,8 +239,8 @@ const Index = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {features.map((f, i) => (
-              <AnimatedCard key={f.title} delay={i * 100}>
-                <div className="text-center p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:-translate-y-1 transition-all">
+              <AnimatedCard key={f.title} delay={i * 100} className="h-full">
+                <div className="h-full flex flex-col text-center p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:-translate-y-1 transition-all">
                   <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mx-auto mb-3">
                     <f.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
