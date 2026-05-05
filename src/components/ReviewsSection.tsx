@@ -71,7 +71,7 @@ const ReviewsSection = () => {
         <div className="text-center mb-4">
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
             <Star className="w-4 h-4 fill-accent" />
-            5.0 na Google · 38 opinii
+            5.0 na Google · 40 opinii
           </div>
           <h2 className="text-3xl font-extrabold text-foreground mb-4">
             Co mówią o nas klienci?
