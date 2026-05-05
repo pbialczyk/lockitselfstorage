@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface SEOHeadProps {
   title?: string;
@@ -8,8 +9,10 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
-  const fullTitle = title ? `${title} | LOCKIT self storage Szczecin` : "LOCKIT self storage — Boksy magazynowe Szczecin";
-  const metaDescription = description || "Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7. Boksy od 3 m² do 12 m². Wynajem online w 5 minut.";
+  const { i18n } = useTranslation();
+  const isEn = i18n.language === "en";
+  const fullTitle = title ? `${title} | LOCKIT self storage` : (isEn ? "LOCKIT self storage — Storage units Szczecin" : "LOCKIT self storage — Boksy magazynowe Szczecin");
+  const metaDescription = description || (isEn ? "Self-service storage units in Szczecin. Safe, modern, available 24/7. Units from 3 m² to 12 m². Online rental in 5 minutes." : "Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7. Boksy od 3 m² do 12 m². Wynajem online w 5 minut.");
 
   useEffect(() => {
     document.title = fullTitle;
@@ -40,7 +43,7 @@ const SEOHead = ({ title, description, canonical, jsonLd }: SEOHeadProps) => {
     setOg("og:title", fullTitle);
     setOg("og:description", metaDescription);
     setOg("og:type", "website");
-    setOg("og:locale", "pl_PL");
+    setOg("og:locale", isEn ? "en_US" : "pl_PL");
     setOg("og:site_name", "LOCKIT self storage Szczecin");
     setOg("og:url", `https://lockit.pl${canonical || "/"}`);
 
