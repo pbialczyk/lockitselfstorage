@@ -1,6 +1,4 @@
-import type { Translation } from "./pl";
-
-export const en: Translation = {
+export const en = {
   nav: {
     home: "Home",
     boksy: "Units & pricing",

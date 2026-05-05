@@ -5,12 +5,13 @@ import { en } from "./locales/en";
 
 i18n.use(initReactI18next).init({
   resources: {
-    pl: { translation: pl },
-    en: { translation: en },
+    pl: { translation: pl as Record<string, unknown> },
+    en: { translation: en as Record<string, unknown> },
   },
   lng: "pl",
   fallbackLng: "pl",
   interpolation: { escapeValue: false },
+  returnObjects: true,
 });
 
 export default i18n;
