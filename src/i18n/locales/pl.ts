@@ -535,6 +535,6 @@ export const pl = {
     p: "Ups! Nie znaleziono strony",
     home: "Wróć na stronę główną",
   },
-} as const;
+};
 
 export type Translation = typeof pl;
