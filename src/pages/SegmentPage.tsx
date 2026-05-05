@@ -160,9 +160,6 @@ const SegmentPage = () => {
 
   if (!data) return null;
 
-  const isKlienciPage = location.pathname === "/dla-klientow-indywidualnych";
-  const bizData = segmentData["/dla-firm"];
-
   return (
     <Layout title={data.title} description={data.description} canonical={data.canonical}
       jsonLd={{
@@ -173,8 +170,6 @@ const SegmentPage = () => {
       }}
     >
       <SegmentSection data={data} headingTag="h1" />
-
-      {isKlienciPage && bizData && <SegmentSection data={bizData} headingTag="h2" />}
 
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto max-w-4xl">
