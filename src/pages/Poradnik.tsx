@@ -1,74 +1,36 @@
 import Layout from "@/components/layout/Layout";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LLink from "@/i18n/LLink";
 
-const articles = [
-  {
-    slug: "jak-wybrac-rozmiar-boksu",
-    title: "Jak wybrać rozmiar boksu magazynowego?",
-    excerpt: "Poradnik jak dobrać odpowiedni rozmiar self storage do swoich potrzeb. Porównanie boksów S, M i L.",
-    date: "2026-03-15",
-  },
-  {
-    slug: "self-storage-dla-firm",
-    title: "Self storage dla firm — korzyści i zastosowania",
-    excerpt: "Dlaczego coraz więcej firm w Szczecinie wybiera self storage? Poznaj korzyści elastycznego magazynowania.",
-    date: "2026-03-10",
-  },
-  {
-    slug: "przechowywanie-remont",
-    title: "Przechowywanie rzeczy podczas remontu — poradnik",
-    excerpt: "Co zrobić z meblami podczas remontu? Jak bezpiecznie przechować wyposażenie mieszkania?",
-    date: "2026-03-05",
-  },
-  {
-    slug: "archiwizacja-dokumentow",
-    title: "Archiwizacja dokumentów firmowych — poradnik",
-    excerpt: "Jak archiwizować dokumenty zgodnie z przepisami? Ile lat trzeba przechowywać akta firmowe?",
-    date: "2026-03-01",
-  },
-];
-
-const Poradnik = () => (
-  <Layout
-    title="Poradnik self storage — blog LOCKIT"
-    description="Porady dotyczące self storage, przechowywania rzeczy, organizacji przestrzeni. Blog LOCKIT self storage Szczecin."
-    canonical="/poradnik"
-    jsonLd={{
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      name: "Poradnik LOCKIT self storage",
-      url: "https://lockit.pl/poradnik",
-      publisher: { "@type": "Organization", name: "LOCKIT self storage" },
-    }}
-  >
-    <section className="section-padding bg-brand-deep">
-      <div className="container-wide mx-auto text-center">
-        <h1 className="text-4xl lg:text-5xl font-extrabold text-primary-foreground mb-4">Poradnik</h1>
-        <p className="text-brand-light/80 text-lg max-w-2xl mx-auto">
-          Praktyczne porady dotyczące self storage, przechowywania rzeczy i organizacji przestrzeni.
-        </p>
-      </div>
-    </section>
-
-    <section className="section-padding bg-background">
-      <div className="container-narrow mx-auto">
-        <div className="grid md:grid-cols-2 gap-6">
-          {articles.map((article) => (
-            <Link
-              key={article.slug}
-              to={`/poradnik/${article.slug}`}
-              className="block bg-card border border-border rounded-xl p-6 hover:border-brand hover:shadow-lg transition-all group"
-            >
-              <time className="text-xs text-muted-foreground">{new Date(article.date).toLocaleDateString("pl-PL", { year: "numeric", month: "long", day: "numeric" })}</time>
-              <h2 className="text-lg font-bold text-foreground group-hover:text-brand transition-colors mt-2 mb-2">{article.title}</h2>
-              <p className="text-muted-foreground text-sm">{article.excerpt}</p>
-              <span className="text-brand text-sm font-semibold mt-3 inline-block">Czytaj więcej →</span>
-            </Link>
-          ))}
+const Poradnik = () => {
+  const { t } = useTranslation();
+  const articles = (t("poradnik.articles", { returnObjects: true }) as { slug: string; title: string; excerpt: string; date: string }[]) || [];
+  const locale = t("poradnik.locale");
+  return (
+    <Layout title={t("poradnik.title")} description={t("poradnik.description")} canonical="/poradnik"
+      jsonLd={{ "@context": "https://schema.org", "@type": "Blog", name: "LOCKIT", url: "https://lockit.pl/poradnik", publisher: { "@type": "Organization", name: "LOCKIT self storage" } }}>
+      <section className="section-padding bg-brand-deep">
+        <div className="container-wide mx-auto text-center">
+          <h1 className="text-4xl lg:text-5xl font-extrabold text-primary-foreground mb-4">{t("poradnik.h1")}</h1>
+          <p className="text-brand-light/80 text-lg max-w-2xl mx-auto">{t("poradnik.sub")}</p>
         </div>
-      </div>
-    </section>
-  </Layout>
-);
+      </section>
+      <section className="section-padding bg-background">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-2 gap-6">
+            {articles.map((a) => (
+              <LLink key={a.slug} to={`/poradnik/${a.slug}`} className="block bg-card border border-border rounded-xl p-6 hover:border-brand hover:shadow-lg transition-all group">
+                <time className="text-xs text-muted-foreground">{new Date(a.date).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" })}</time>
+                <h2 className="text-lg font-bold text-foreground group-hover:text-brand transition-colors mt-2 mb-2">{a.title}</h2>
+                <p className="text-muted-foreground text-sm">{a.excerpt}</p>
+                <span className="text-brand text-sm font-semibold mt-3 inline-block">{t("common.seeMore")}</span>
+              </LLink>
+            ))}
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
 
 export default Poradnik;
