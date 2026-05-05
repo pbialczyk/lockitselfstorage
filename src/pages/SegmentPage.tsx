@@ -171,6 +171,24 @@ const SegmentPage = () => {
     >
       <SegmentSection data={data} headingTag="h1" />
 
+      <section className="bg-background pt-4 pb-2">
+        <div className="container-narrow mx-auto max-w-4xl">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {Object.entries(segmentData)
+              .filter(([path]) => path !== location.pathname)
+              .map(([path, d]) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className="px-4 py-2 text-sm rounded-full border border-border bg-card text-foreground hover:border-brand hover:text-brand transition-colors"
+                >
+                  {d.h1}
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto max-w-4xl">
           <div className="bg-brand-50 border border-brand-light rounded-xl p-8 text-center">
