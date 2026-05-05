@@ -24,44 +24,48 @@ const PageFallback = () => (
   </div>
 );
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path="/" element={<Index />} />
-    <Route path="/boksy" element={<Boksy />} />
-    <Route path="/boksy/:slug" element={<BoksDetail />} />
-    <Route path="/lokalizacje" element={<Lokalizacje />} />
-    <Route path="/self-storage-szczecin" element={<SelfStorageSzczecin />} />
-    <Route path="/dla-klientow-indywidualnych" element={<SegmentPage />} />
-    <Route path="/dla-firm" element={<SegmentPage />} />
-    <Route path="/remont-przeprowadzka" element={<SegmentPage />} />
-    <Route path="/archiwum-dokumentow" element={<SegmentPage />} />
-    <Route path="/dla-studentow" element={<SegmentPage />} />
-    <Route path="/transport-przeprowadzka" element={<ServicePage />} />
-    <Route path="/ubezpieczenie" element={<ServicePage />} />
-    <Route path="/pakowanie-organizacja" element={<ServicePage />} />
-    <Route path="/poradnik" element={<Poradnik />} />
-    <Route path="/poradnik/:slug" element={<BlogPost />} />
-    <Route path="/o-nas" element={<ONas />} />
-    <Route path="/faq" element={<FAQPage />} />
-    <Route path="/kontakt" element={<Kontakt />} />
-    <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-    <Route path="/ekspansja" element={<Ekspansja />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-);
+const routeDefs: { path: string; element: JSX.Element }[] = [
+  { path: "/", element: <Index /> },
+  { path: "/boksy", element: <Boksy /> },
+  { path: "/boksy/:slug", element: <BoksDetail /> },
+  { path: "/lokalizacje", element: <Lokalizacje /> },
+  { path: "/self-storage-szczecin", element: <SelfStorageSzczecin /> },
+  { path: "/dla-klientow-indywidualnych", element: <SegmentPage /> },
+  { path: "/dla-firm", element: <SegmentPage /> },
+  { path: "/remont-przeprowadzka", element: <SegmentPage /> },
+  { path: "/archiwum-dokumentow", element: <SegmentPage /> },
+  { path: "/dla-studentow", element: <SegmentPage /> },
+  { path: "/transport-przeprowadzka", element: <ServicePage /> },
+  { path: "/ubezpieczenie", element: <ServicePage /> },
+  { path: "/pakowanie-organizacja", element: <ServicePage /> },
+  { path: "/poradnik", element: <Poradnik /> },
+  { path: "/poradnik/:slug", element: <BlogPost /> },
+  { path: "/o-nas", element: <ONas /> },
+  { path: "/faq", element: <FAQPage /> },
+  { path: "/kontakt", element: <Kontakt /> },
+  { path: "/polityka-prywatnosci", element: <PolitykaPrywatnosci /> },
+  { path: "/ekspansja", element: <Ekspansja /> },
+];
 
 const App = () => (
   <BrowserRouter>
     <LangSync />
     <Suspense fallback={<PageFallback />}>
       <Routes>
-        <Route path="/en/*" element={<AppRoutesWrapped />} />
-        <Route path="/*" element={<AppRoutes />} />
+        {routeDefs.map((r) => (
+          <Route key={r.path} path={r.path} element={r.element} />
+        ))}
+        {routeDefs.map((r) => (
+          <Route
+            key={`en${r.path}`}
+            path={r.path === "/" ? "/en" : `/en${r.path}`}
+            element={r.element}
+          />
+        ))}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   </BrowserRouter>
 );
-
-const AppRoutesWrapped = () => <AppRoutes />;
 
 export default App;
