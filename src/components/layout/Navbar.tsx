@@ -1,59 +1,68 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Phone, ChevronDown, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Logo from "@/components/Logo";
-
-type NavItem = {
-  label: string;
-  href: string;
-  children?: { label: string; href: string }[];
-};
-
-const navItems: NavItem[] = [
-  { label: "Główna", href: "/" },
-  { label: "Boksy i cennik", href: "/boksy" },
-  { label: "Lokalizacje", href: "/lokalizacje" },
-  {
-    label: "Dla kogo?",
-    href: "/dla-klientow-indywidualnych",
-    children: [
-      { label: "Klient indywidualny", href: "/dla-klientow-indywidualnych" },
-      { label: "Dla firm / B2B", href: "/dla-firm" },
-      { label: "Remont i przeprowadzka", href: "/remont-przeprowadzka" },
-      { label: "Archiwum dokumentów", href: "/archiwum-dokumentow" },
-      { label: "Dla studentów", href: "/dla-studentow" },
-    ],
-  },
-  { label: "Poradnik", href: "/poradnik" },
-  { label: "O nas", href: "/o-nas" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Kontakt", href: "/kontakt" },
-];
+import { getLangFromPath, stripLang } from "@/i18n/LangSync";
+import { useLocalePath } from "@/i18n/LLink";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const localePath = useLocalePath();
+  const lang = getLangFromPath(location.pathname);
 
-  const isItemActive = (item: NavItem) =>
-    location.pathname === item.href ||
-    item.children?.some((c) => c.href === location.pathname);
+  const navItems = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.boksy"), href: "/boksy" },
+    { label: t("nav.lokalizacje"), href: "/lokalizacje" },
+    {
+      label: t("nav.dlaKogo"),
+      href: "/dla-klientow-indywidualnych",
+      children: [
+        { label: t("nav.klientIndywidualny"), href: "/dla-klientow-indywidualnych" },
+        { label: t("nav.dlaFirm"), href: "/dla-firm" },
+        { label: t("nav.remont"), href: "/remont-przeprowadzka" },
+        { label: t("nav.archiwum"), href: "/archiwum-dokumentow" },
+        { label: t("nav.studenci"), href: "/dla-studentow" },
+      ],
+    },
+    { label: t("nav.poradnik"), href: "/poradnik" },
+    { label: t("nav.oNas"), href: "/o-nas" },
+    { label: t("nav.faq"), href: "/faq" },
+    { label: t("nav.kontakt"), href: "/kontakt" },
+  ];
+
+  const switchLang = () => {
+    const base = stripLang(location.pathname);
+    if (lang === "pl") {
+      navigate(base === "/" ? "/en" : `/en${base}`);
+    } else {
+      navigate(base);
+    }
+  };
+
+  const currentBase = stripLang(location.pathname);
+  const isItemActive = (item: typeof navItems[number]) =>
+    currentBase === item.href || item.children?.some((c) => c.href === currentBase);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-deep/95 backdrop-blur-md border-b border-brand/30">
       <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2 shrink-0">
+          <Link to={localePath("/")} className="flex items-center gap-2 shrink-0">
             <Logo />
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) =>
               item.children ? (
                 <div key={item.href} className="relative group">
                   <Link
-                    to={item.href}
+                    to={localePath(item.href)}
                     className={`px-3 py-2 text-sm font-medium rounded-md transition-colors inline-flex items-center gap-1 ${
                       isItemActive(item)
                         ? "text-primary-foreground bg-brand/40"
@@ -68,9 +77,9 @@ const Navbar = () => {
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
-                          to={child.href}
+                          to={localePath(child.href)}
                           className={`block px-4 py-2 text-sm transition-colors ${
-                            location.pathname === child.href
+                            currentBase === child.href
                               ? "text-primary-foreground bg-brand/40"
                               : "text-brand-light hover:text-primary-foreground hover:bg-brand/20"
                           }`}
@@ -84,9 +93,9 @@ const Navbar = () => {
               ) : (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  to={localePath(item.href)}
                   className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === item.href
+                    currentBase === item.href
                       ? "text-primary-foreground bg-brand/40"
                       : "text-brand-light hover:text-primary-foreground hover:bg-brand/20"
                   }`}
@@ -98,6 +107,14 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            <button
+              onClick={switchLang}
+              className="flex items-center gap-1 text-sm text-brand-light hover:text-primary-foreground transition-colors px-2 py-1"
+              aria-label="Change language"
+            >
+              <Globe className="w-4 h-4" />
+              {t("nav.lang")}
+            </button>
             <a href="tel:+48666030717" className="flex items-center gap-2 text-sm text-brand-light hover:text-primary-foreground transition-colors">
               <Phone className="w-4 h-4" />
               666 030 717
@@ -108,21 +125,19 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="gradient-brand text-foreground px-5 py-2.5 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity"
             >
-              Wynajmij boks
+              {t("nav.rentBox")}
             </a>
           </div>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 text-brand-light hover:text-primary-foreground transition-colors"
-            aria-label="Menu"
+            aria-label={t("nav.menu")}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile menu */}
         {isOpen && (
           <div className="lg:hidden pb-4 border-t border-brand/20 mt-2 pt-4 space-y-1">
             {navItems.map((item) =>
@@ -146,10 +161,10 @@ const Navbar = () => {
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
-                          to={child.href}
+                          to={localePath(child.href)}
                           onClick={() => setIsOpen(false)}
                           className={`block px-4 py-2 text-sm rounded-md transition-colors ${
-                            location.pathname === child.href
+                            currentBase === child.href
                               ? "text-primary-foreground bg-brand/40"
                               : "text-brand-light hover:text-primary-foreground hover:bg-brand/20"
                           }`}
@@ -163,10 +178,10 @@ const Navbar = () => {
               ) : (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  to={localePath(item.href)}
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === item.href
+                    currentBase === item.href
                       ? "text-primary-foreground bg-brand/40"
                       : "text-brand-light hover:text-primary-foreground hover:bg-brand/20"
                   }`}
@@ -176,6 +191,13 @@ const Navbar = () => {
               )
             )}
             <div className="pt-3 px-4 space-y-2">
+              <button
+                onClick={() => { switchLang(); setIsOpen(false); }}
+                className="flex items-center gap-2 text-sm text-brand-light"
+              >
+                <Globe className="w-4 h-4" />
+                {t("nav.lang")}
+              </button>
               <a href="tel:+48666030717" className="flex items-center gap-2 text-sm text-brand-light">
                 <Phone className="w-4 h-4" />
                 666 030 717
@@ -184,9 +206,9 @@ const Navbar = () => {
                 href="https://wynajmij.lockit.pl"
                 target="_blank"
                 rel="noopener noreferrer"
-              className="block gradient-brand text-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
+                className="block gradient-brand text-foreground px-5 py-3 rounded-lg text-sm font-bold text-center"
               >
-                Wynajmij boks
+                {t("nav.rentBox")}
               </a>
             </div>
           </div>

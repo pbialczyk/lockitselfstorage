@@ -1,18 +1,17 @@
-import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Logo from "@/components/Logo";
+import LLink from "@/i18n/LLink";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-brand-deep text-brand-light">
       <div className="container-wide mx-auto section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
           <div>
             <Logo className="mb-4" />
-            <p className="text-sm leading-relaxed opacity-80">
-              Samoobsługowe boksy magazynowe w Szczecinie. Bezpieczne, nowoczesne, dostępne 24/7.
-            </p>
+            <p className="text-sm leading-relaxed opacity-80">{t("footer.tagline")}</p>
             <div className="flex gap-4 mt-4">
               <a href="https://m.facebook.com/profile.php?id=61556380212197" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors" aria-label="Facebook">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -23,36 +22,34 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links */}
           <div>
-            <h3 className="text-primary-foreground font-bold text-sm mb-4">Oferta</h3>
+            <h3 className="text-primary-foreground font-bold text-sm mb-4">{t("footer.offer")}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/boksy" className="hover:text-primary-foreground transition-colors">Boksy i cennik</Link></li>
-              <li><Link to="/boksy/boks-s-szczecin" className="hover:text-primary-foreground transition-colors">Boks S — 3 m²</Link></li>
-              <li><Link to="/boksy/boks-m-szczecin" className="hover:text-primary-foreground transition-colors">Boks M — 6 m²</Link></li>
-              <li><Link to="/boksy/boks-l-szczecin" className="hover:text-primary-foreground transition-colors">Boks L — 12 m²</Link></li>
-              <li><Link to="/lokalizacje" className="hover:text-primary-foreground transition-colors">Lokalizacje</Link></li>
+              <li><LLink to="/boksy" className="hover:text-primary-foreground transition-colors">{t("footer.boksyCennik")}</LLink></li>
+              <li><LLink to="/boksy/boks-s-szczecin" className="hover:text-primary-foreground transition-colors">{t("footer.boksS")}</LLink></li>
+              <li><LLink to="/boksy/boks-m-szczecin" className="hover:text-primary-foreground transition-colors">{t("footer.boksM")}</LLink></li>
+              <li><LLink to="/boksy/boks-l-szczecin" className="hover:text-primary-foreground transition-colors">{t("footer.boksL")}</LLink></li>
+              <li><LLink to="/lokalizacje" className="hover:text-primary-foreground transition-colors">{t("footer.locations")}</LLink></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-primary-foreground font-bold text-sm mb-4">Dla kogo?</h3>
+            <h3 className="text-primary-foreground font-bold text-sm mb-4">{t("footer.forWhom")}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/dla-klientow-indywidualnych" className="hover:text-primary-foreground transition-colors">Klient indywidualny</Link></li>
-              <li><Link to="/dla-firm" className="hover:text-primary-foreground transition-colors">Dla firm / B2B</Link></li>
-              <li><Link to="/remont-przeprowadzka" className="hover:text-primary-foreground transition-colors">Remont i przeprowadzka</Link></li>
-              <li><Link to="/archiwum-dokumentow" className="hover:text-primary-foreground transition-colors">Archiwum dokumentów</Link></li>
-              <li><Link to="/dla-studentow" className="hover:text-primary-foreground transition-colors">Dla studentów</Link></li>
+              <li><LLink to="/dla-klientow-indywidualnych" className="hover:text-primary-foreground transition-colors">{t("nav.klientIndywidualny")}</LLink></li>
+              <li><LLink to="/dla-firm" className="hover:text-primary-foreground transition-colors">{t("nav.dlaFirm")}</LLink></li>
+              <li><LLink to="/remont-przeprowadzka" className="hover:text-primary-foreground transition-colors">{t("nav.remont")}</LLink></li>
+              <li><LLink to="/archiwum-dokumentow" className="hover:text-primary-foreground transition-colors">{t("nav.archiwum")}</LLink></li>
+              <li><LLink to="/dla-studentow" className="hover:text-primary-foreground transition-colors">{t("nav.studenci")}</LLink></li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-primary-foreground font-bold text-sm mb-4">Kontakt</h3>
+            <h3 className="text-primary-foreground font-bold text-sm mb-4">{t("footer.contact")}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>ul. Gdańska 14C<br />70-661 Szczecin</span>
+                <span>{t("footer.address1")}<br />{t("footer.address2")}</span>
               </li>
               <li>
                 <a href="tel:+48666030717" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
@@ -70,50 +67,29 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* App Downloads */}
         <div className="border-t border-brand/20 mt-10 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <span className="text-sm font-semibold text-primary-foreground">Pobierz aplikację:</span>
+            <span className="text-sm font-semibold text-primary-foreground">{t("footer.downloadApp")}</span>
             <div className="flex gap-3 items-center">
-              <a
-                href="https://wynajmij.lockit.pl"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Otwórz aplikację WWW"
-                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
-              >
+              <a href="https://wynajmij.lockit.pl" target="_blank" rel="noopener noreferrer" aria-label={t("footer.webApp")} className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12">
                 <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M2 12h20"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                 </svg>
                 <span className="flex flex-col leading-tight text-left">
-                  <span className="text-[10px] uppercase tracking-wide opacity-90">Otwórz</span>
-                  <span className="text-base font-semibold -mt-0.5">Aplikacja WWW</span>
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">{t("footer.openWebApp")}</span>
+                  <span className="text-base font-semibold -mt-0.5">{t("footer.webApp")}</span>
                 </span>
               </a>
-              <a
-                href="https://apps.apple.com/pl/app/lockit-self-storage/id6752020694"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Pobierz w App Store"
-                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
-              >
+              <a href="https://apps.apple.com/pl/app/lockit-self-storage/id6752020694" target="_blank" rel="noopener noreferrer" aria-label={t("footer.appStore")} className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12">
                 <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
                 <span className="flex flex-col leading-tight text-left">
-                  <span className="text-[10px] uppercase tracking-wide opacity-90">Pobierz w</span>
-                  <span className="text-base font-semibold -mt-0.5">App Store</span>
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">{t("footer.appStorePre")}</span>
+                  <span className="text-base font-semibold -mt-0.5">{t("footer.appStore")}</span>
                 </span>
               </a>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.sprytki.userportal.lockit&pcampaignid=web_share"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Pobierz z Google Play"
-                className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12"
-              >
+              <a href="https://play.google.com/store/apps/details?id=com.sprytki.userportal.lockit&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label={t("footer.googlePlay")} className="inline-flex items-center gap-3 bg-black hover:bg-black/80 text-white px-4 py-2 rounded-lg transition-colors h-12">
                 <svg className="w-6 h-6 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
                   <path fill="#00C3FF" d="M325.3 234.3 104.3 13.6c-1-1-2.5.1-2 1.5l205.3 222.4z"/>
                   <path fill="#FF3A44" d="m104.3 498.4 221-221-17.7-19-205.3 222.4c-.5 1.4 1 2.6 2 1.5z"/>
@@ -122,17 +98,16 @@ const Footer = () => {
                   <path fill="#00B85C" d="M307.6 274.5 96 499c2.7 1 5.7.8 8.3-.6l275.3-160.9z"/>
                 </svg>
                 <span className="flex flex-col leading-tight text-left">
-                  <span className="text-[10px] uppercase tracking-wide opacity-90">Pobierz z</span>
-                  <span className="text-base font-semibold -mt-0.5">Google Play</span>
+                  <span className="text-[10px] uppercase tracking-wide opacity-90">{t("footer.googlePlayPre")}</span>
+                  <span className="text-base font-semibold -mt-0.5">{t("footer.googlePlay")}</span>
                 </span>
               </a>
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-70">
-            <p>© {new Date().getFullYear()} LOCKIT self storage. Wszelkie prawa zastrzeżone.</p>
+            <p>© {new Date().getFullYear()} LOCKIT self storage. {t("footer.rights")}</p>
             <div className="flex gap-4">
-              <Link to="/polityka-prywatnosci" className="hover:text-primary-foreground transition-colors">Polityka prywatności</Link>
-              <Link to="/regulamin" className="hover:text-primary-foreground transition-colors">Regulamin</Link>
+              <LLink to="/polityka-prywatnosci" className="hover:text-primary-foreground transition-colors">{t("footer.privacy")}</LLink>
             </div>
           </div>
         </div>
