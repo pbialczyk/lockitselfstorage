@@ -301,7 +301,7 @@ export const en = {
     items: [
       { q: "What is LOCKIT Self Storage?", a: "We are a Szczecin-based company specializing in self-service storage units. We offer safe, monitored units available 24/7 at Gdańska 14C St. in Szczecin." },
       { q: "Are the warehouses safe?", a: "Safety is our priority. The facility is monitored 24/7, with access control and automatic security. We also insure all stored items." },
-      { q: "How do I rent a unit?", a: "Online rental takes 5 minutes. Click Rent a unit, choose a unit, create an account, pay the first rent — and you can use the unit right away." },
+      { q: "How do I rent a unit?", a: "Online rental takes 5 minutes. Click Rent a unit, choose a unit type, create an account, pay the first rent — and you can use the unit right away." },
       { q: "How big a unit do I need?", a: "Unit S (3 m²) — student room, seasonal items. Unit M (6 m²) — flat up to 50 m². Unit L (12 m²) — house up to 100 m² or large business storage." },
       { q: "What can I store?", a: "Almost anything — furniture, equipment, documents, business goods. We do not store: weapons, flammable materials, living organisms or prohibited substances." },
       { q: "How much does it cost?", a: "Unit S from 125 PLN/mo., Unit M from 175 PLN/mo., Unit L from 250 PLN/mo. Currently -50% for the first month. Insurance and monitoring included." },

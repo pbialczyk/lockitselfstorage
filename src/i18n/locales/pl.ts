@@ -301,7 +301,7 @@ export const pl = {
     items: [
       { q: "Czym jest LOCKIT Self Storage?", a: "Jesteśmy szczecińską firmą specjalizującą się w wynajmie samoobsługowych boksów magazynowych. Oferujemy bezpieczne, monitorowane boksy dostępne 24/7 przy ul. Gdańskiej 14C w Szczecinie." },
       { q: "Czy magazyny są bezpieczne?", a: "Bezpieczeństwo jest naszym priorytetem. Obiekt jest monitorowany 24/7, z kontrolą dostępu i automatyczną ochroną. Dodatkowo ubezpieczamy wszystkie przechowywane rzeczy." },
-      { q: "Jak wynająć magazyn?", a: "Wynajem online zajmuje 5 minut. Klikasz Wynajmij boks, wybierasz boks, zakładasz konto, płacisz pierwszy czynsz — i możesz od razu korzystać z magazynu." },
+      { q: "Jak wynająć magazyn?", a: "Wynajem online zajmuje 5 minut. Klikasz Wynajmij boks, wybierasz rodzaj boksu, zakładasz konto, płacisz pierwszy czynsz — i możesz od razu korzystać z magazynu." },
       { q: "Jak duży magazyn potrzebuję?", a: "Boks S (3 m²) — pokój studencki, rzeczy sezonowe. Boks M (6 m²) — mieszkanie do 50 m². Boks L (12 m²) — dom do 100 m² lub duży magazyn firmowy." },
       { q: "Co mogę przechować?", a: "Prawie wszystko — meble, sprzęt, dokumenty, towary firmowe. Nie przechowujemy: broni, materiałów łatwopalnych, żywych organizmów i substancji niedozwolonych." },
       { q: "Ile kosztuje wynajem?", a: "Boks S od 125 zł/mies., Boks M od 175 zł/mies., Boks L od 250 zł/mies. Aktualnie -50% na pierwszy miesiąc. Ubezpieczenie i monitoring w cenie." },
