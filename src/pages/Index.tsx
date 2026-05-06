@@ -29,9 +29,9 @@ const LOCAL_BUSINESS_JSONLD = {
 const featureIcons = [Clock, Shield, CalendarDays, Package, MapPin, Users];
 
 const boxesMeta = [
-  { label: "S", image: boksS, price: "od 125", priceEn: "from 125", priceRegular: "250", link: "/boksy/boks-s-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62" },
-  { label: "M", image: boksM, price: "od 175", priceEn: "from 175", priceRegular: "350", link: "/boksy/boks-m-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62", featured: true },
-  { label: "L", image: boksL, price: "od 250", priceEn: "from 250", priceRegular: "500", link: "/boksy/boks-l-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62" },
+  { label: "S", image: boksS, w: 256, h: 236, price: "od 125", priceEn: "from 125", priceRegular: "250", link: "/boksy/boks-s-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62" },
+  { label: "M", image: boksM, w: 256, h: 200, price: "od 175", priceEn: "from 175", priceRegular: "350", link: "/boksy/boks-m-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62", featured: true },
+  { label: "L", image: boksL, w: 256, h: 181, price: "od 250", priceEn: "from 250", priceRegular: "500", link: "/boksy/boks-l-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62" },
 ];
 
 const segmentHrefs = ["/dla-klientow-indywidualnych", "/dla-firm", "/remont-przeprowadzka", "/archiwum-dokumentow", "/dla-studentow"];
