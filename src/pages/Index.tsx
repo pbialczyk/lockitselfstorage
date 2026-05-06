@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import boksS from "@/assets/boks-s.webp";
-import boksM from "@/assets/boks-m.webp";
-import boksL from "@/assets/boks-l.webp";
+import boksS from "@/assets/boks-s-256.webp";
+import boksM from "@/assets/boks-m-256.webp";
+import boksL from "@/assets/boks-l-256.webp";
 import Layout from "@/components/layout/Layout";
 import LLink from "@/i18n/LLink";
 import { useInView } from "@/hooks/useInView";
