@@ -17,14 +17,14 @@ const ReviewCard = ({ review, delay, label }: { review: Review; delay: number; l
   return (
     <div
       ref={ref}
-      className={`flex-shrink-0 w-[300px] sm:w-[340px] bg-card border border-border rounded-2xl p-6 transition-all duration-700 ${
+      className={`flex-shrink-0 w-[300px] sm:w-[340px] lg:w-auto h-full flex flex-col bg-card border border-border rounded-2xl p-6 transition-all duration-700 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <StarRating />
-      <p className="text-sm text-muted-foreground mt-4 mb-5 leading-relaxed">„{review.text}"</p>
-      <div className="flex items-center gap-3">
+      <p className="text-sm text-muted-foreground mt-4 mb-5 leading-relaxed flex-1">„{review.text}"</p>
+      <div className="flex items-center gap-3 mt-auto">
         <div className="w-10 h-10 rounded-full bg-brand/20 text-brand flex items-center justify-center text-sm font-bold">
           {review.initials}
         </div>
@@ -54,7 +54,7 @@ const ReviewsSection = () => {
 
         <div className="mt-10 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
           {reviews.map((review, i) => (
-            <div key={review.name} className="snap-start">
+            <div key={review.name} className="snap-start lg:h-full">
               <ReviewCard review={review} delay={i * 100} label={t("reviews.googleReview")} />
             </div>
           ))}
