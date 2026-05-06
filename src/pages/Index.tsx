@@ -133,7 +133,7 @@ const Index = () => {
                   <div className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col ${box.featured ? "border-accent bg-brand/50 scale-[1.03]" : "border-brand/40 bg-brand/30"}`}>
                     {box.featured && <div className="bg-accent text-accent-foreground text-center py-1.5 text-xs font-bold tracking-wide uppercase">{t("offer.featured")}</div>}
                     <div className="p-6 text-center flex flex-col flex-1">
-                      <img src={box.image} alt={tBox.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
+                      <img src={box.image} alt={tBox.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width={box.w} height={box.h} />
                       <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
                       <h3 className="text-lg font-bold text-primary-foreground mb-1">{tBox.name}</h3>
                       <p className="text-sm text-brand-light/80 mb-4 flex-1">{tBox.desc}</p>
