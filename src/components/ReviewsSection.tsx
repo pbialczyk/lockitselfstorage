@@ -54,7 +54,7 @@ const ReviewsSection = () => {
 
         <div className="mt-10 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
           {reviews.map((review, i) => (
-            <div key={review.name} className="snap-start">
+            <div key={review.name} className="snap-start lg:h-full">
               <ReviewCard review={review} delay={i * 100} label={t("reviews.googleReview")} />
             </div>
           ))}
