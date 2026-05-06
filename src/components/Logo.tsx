@@ -1,5 +1,5 @@
-import lockitLogoDark from "@/assets/lockit-logo-color-360.webp";
-import lockitLogoLight from "@/assets/lockit-logo-light-360.webp";
+import lockitLogoDark from "@/assets/lockit-logo-color-206.webp";
+import lockitLogoLight from "@/assets/lockit-logo-light-206.webp";
 
 interface LogoProps {
   className?: string;

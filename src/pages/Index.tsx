@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Clock, Shield, CalendarDays, Package, MapPin, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import boksS from "@/assets/boks-s.webp";
-import boksM from "@/assets/boks-m.webp";
-import boksL from "@/assets/boks-l.webp";
+import boksS from "@/assets/boks-s-256.webp";
+import boksM from "@/assets/boks-m-256.webp";
+import boksL from "@/assets/boks-l-256.webp";
 import Layout from "@/components/layout/Layout";
 import LLink from "@/i18n/LLink";
 import { useInView } from "@/hooks/useInView";
@@ -29,9 +29,9 @@ const LOCAL_BUSINESS_JSONLD = {
 const featureIcons = [Clock, Shield, CalendarDays, Package, MapPin, Users];
 
 const boxesMeta = [
-  { label: "S", image: boksS, price: "od 125", priceEn: "from 125", priceRegular: "250", link: "/boksy/boks-s-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62" },
-  { label: "M", image: boksM, price: "od 175", priceEn: "from 175", priceRegular: "350", link: "/boksy/boks-m-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62", featured: true },
-  { label: "L", image: boksL, price: "od 250", priceEn: "from 250", priceRegular: "500", link: "/boksy/boks-l-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62" },
+  { label: "S", image: boksS, w: 256, h: 236, price: "od 125", priceEn: "from 125", priceRegular: "250", link: "/boksy/boks-s-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=32769a88-77d9-ef11-88f8-000d3a1d3d62" },
+  { label: "M", image: boksM, w: 256, h: 200, price: "od 175", priceEn: "from 175", priceRegular: "350", link: "/boksy/boks-m-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=531f0bd3-77d9-ef11-88f8-000d3a1d3d62", featured: true },
+  { label: "L", image: boksL, w: 256, h: 181, price: "od 250", priceEn: "from 250", priceRegular: "500", link: "/boksy/boks-l-szczecin", ctaLink: "https://wynajmij.lockit.pl/rent?step=1&typeId=93bd21f7-77d9-ef11-88f8-000d3a1d3d62" },
 ];
 
 const segmentHrefs = ["/dla-klientow-indywidualnych", "/dla-firm", "/remont-przeprowadzka", "/archiwum-dokumentow", "/dla-studentow"];
@@ -133,7 +133,7 @@ const Index = () => {
                   <div className={`rounded-2xl overflow-hidden border-2 transition-all hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col ${box.featured ? "border-accent bg-brand/50 scale-[1.03]" : "border-brand/40 bg-brand/30"}`}>
                     {box.featured && <div className="bg-accent text-accent-foreground text-center py-1.5 text-xs font-bold tracking-wide uppercase">{t("offer.featured")}</div>}
                     <div className="p-6 text-center flex flex-col flex-1">
-                      <img src={box.image} alt={tBox.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width="224" height="158" />
+                      <img src={box.image} alt={tBox.name} className="w-32 h-auto mx-auto mb-3" loading="lazy" width={box.w} height={box.h} />
                       <div className="text-3xl font-extrabold text-primary-foreground mb-2">{box.label}</div>
                       <h3 className="text-lg font-bold text-primary-foreground mb-1">{tBox.name}</h3>
                       <p className="text-sm text-brand-light/80 mb-4 flex-1">{tBox.desc}</p>
